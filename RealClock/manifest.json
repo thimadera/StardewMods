@@ -1,0 +1,10 @@
+{
+    "Name": "Real Clock",
+    "Author": "thimadera",
+    "Version": "1.1.0",
+    "Description": "Updates clock every minute instead of every 10 minutes",
+    "UniqueID": "thimadera.RealClock",
+    "EntryDll": "RealClock.dll",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [ "Nexus:21726", "GitHub:thimadera/StardewMods" ]
+}
