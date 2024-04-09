@@ -4,8 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>RealClock</AssemblyName>
 		<RootNamespace>Thimadera.StardewMods.RealClock</RootNamespace>
-		<Version>1.1.0</Version>
-		<EnableHarmony>true</EnableHarmony>
+		<Version>1.2.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>

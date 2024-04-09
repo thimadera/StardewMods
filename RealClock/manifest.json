@@ -1,7 +1,7 @@
 {
     "Name": "Real Clock",
     "Author": "thimadera",
-    "Version": "1.1.0",
+    "Version": "1.2.0",
     "Description": "Updates clock every minute instead of every 10 minutes",
     "UniqueID": "thimadera.RealClock",
     "EntryDll": "RealClock.dll",
