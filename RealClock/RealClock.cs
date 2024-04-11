@@ -78,29 +78,34 @@ namespace Thimadera.StardewMods.RealClock
 
         private string GetTimeFormmated(int exactTime)
         {
-            StringBuilder _timeText = new();
-            StringBuilder _hours = new();
-            StringBuilder _temp = new();
-
             string _amString = Game1.content.LoadString("Strings\\StringsFromCSFiles:DayTimeMoneyBox.cs.10370");
             string _pmString = Game1.content.LoadString("Strings\\StringsFromCSFiles:DayTimeMoneyBox.cs.10371");
 
+            StringBuilder _timeText = new();
             if (this.Config.Show24Hours)
             {
-                _temp.AppendEx(exactTime / 100 % 24);
+                if (exactTime / 100 % 24 <= 9)
+                {
+                    _timeText.Append('0');
+                }
+                _timeText.AppendEx(exactTime / 100 % 24);
             }
             else
             {
-                _temp.AppendEx(exactTime / 100 % 12);
+                if (exactTime / 100 % 12 is <= 9 and > 0)
+                {
+                    _timeText.Append('0');
+                }
+                if (exactTime / 100 % 12 == 0)
+                {
+                    _timeText.Append("12");
+                }
+                else
+                {
+                    _timeText.AppendEx(exactTime / 100 % 12);
+                }
             }
-            if (exactTime / 100 % 24 <= 9)
-            {
-                _hours.Append('0');
-            }
-            _hours.AppendEx(_temp);
 
-            _timeText.Clear();
-            _timeText.AppendEx(_hours);
             _timeText.Append(':');
 
             if (exactTime / 10 % 10 == 0)
@@ -136,8 +141,8 @@ namespace Thimadera.StardewMods.RealClock
                         }
                         break;
                     case LocalizedContentManager.LanguageCode.ja:
-                        _temp.Clear();
-                        _temp.AppendEx(_timeText);
+                        StringBuilder _temp = new();
+                        _temp.Append(_timeText);
                         _timeText.Clear();
                         if (exactTime is < 1200 or >= 2400)
                         {

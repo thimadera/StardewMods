@@ -1,6 +1,6 @@
 # Real Clock Mod for Stardew Valley 🕒🌱
 
-**Version:** 1.2.0
+**Version:** 1.2.1
 
 ## Description:
 This mod alters the game's clock mechanics, updating the time every minute (game time) instead of the default 10 minutes. Experience a more dynamic and realistic passage of time in Stardew Valley with this simple tweak.
