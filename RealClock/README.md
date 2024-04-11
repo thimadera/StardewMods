@@ -1,29 +1,38 @@
-# Stardew Valley Real-Time Clock Mod
+# Real Clock Mod for Stardew Valley 🕒🌱
 
-Hey there! 🌟 Welcome to the Real-Time Clock Mod for Stardew Valley!
+**Version:** 1.2.0
 
-This mod enhances the gameplay experience by updating the in-game clock every single minute instead of every 10 minutes, making time feel more dynamic and realistic.
+## Description:
+This mod alters the game's clock mechanics, updating the time every minute (game time) instead of the default 10 minutes. Experience a more dynamic and realistic passage of time in Stardew Valley with this simple tweak.
 
-## Description
+## Installation:
+1. Download the mod files.
+2. Extract the files to your Stardew Valley mods directory.
+3. Ensure the mod is enabled in the game's mod manager. 🛠️🎮
 
-Ever wished time flowed more naturally in Stardew Valley? With this mod, you'll notice that the clock changes every minute (game time) instead of waiting around for 10 minutes to pass. This small tweak enhances immersion and adds a touch of realism to your gameplay experience.
+## Requirements:
+- Stardew Valley 1.6 🌾
+- SMAPI 4.0 🛠️
 
-## Features
-
-- **Frequent Clock Updates:** Experience the passage of time more realistically with the game clock updating every minute.
-- **Customizable Settings:** Tailor the mod to your liking with three configurable options:
+## Features:
+- **Frequent Clock Updates:** Witness time progression every minute for enhanced immersion.
+- **Customizable Settings:**
   - **Enabled:** Toggle the mod on or off based on your preferences.
-  - **SecondsToMinutes:** Adjust how quickly time progresses. By default, it mirrors the game's original speed, but you can tweak it to match your desired pace.
-  - **Show24Hours:** Choose between a 24-hour clock format or stick with the classic 12-hour display.
+  - **SecondsToMinutes:** Adjust the time progression speed to suit your gameplay style.
+  - **Show24Hours:** Choose between 24-hour or 12-hour clock format. ⏲️🌞
 
-## Inspiration & Credits
+## Inspiration & Credits:
+This mod was inspired by adverserath's ["Casual Life" mod](https://www.nexusmods.com/stardewvalley/mods/6011). 🌟
 
-This mod was inspired by the wonderful work of adverserath's ["Casual Life" mod](https://www.nexusmods.com/stardewvalley/mods/6011). 🌱
+## Known Issues:
+- No known issues at this time. Please report any bugs or feedback on GitHub.
 
-## Source Code
+## Feedback and Support:
+Feel free to leave feedback or suggestions on the [GitHub repository](https://github.com/thimadera/StardewMods/issues). Your input helps improve this mod! 🌟
 
-You can check the source code of this mod from my GitHub repository: [StardewMods](https://github.com/thimadera/StardewMods)
+## License:
+This mod is open source under the [MIT License](../LICENSE.txt). 📜
 
-## Give It a Try!
-
-Download and install this mod from [Nexus](https://www.nexusmods.com/stardewvalley/mods/21726) to experience Stardew Valley in a new light! Let me know what you think and happy farming! 🌾🐓
+## Special Thanks:
+- Adverserath for the original inspiration.
+- SMAPI and Stardew Valley modding community. 🌱✨
