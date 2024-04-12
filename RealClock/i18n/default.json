@@ -1,0 +1,8 @@
+{
+    "config.Enabled.name": "Mod enabled",
+    "config.Enabled.tooltip": "If you disable it, the vanilla clock will be shown and the time speed will not change.",
+    "config.SecondsToMinutes.name": "Seconds to minutes",
+    "config.SecondsToMinutes.tooltip": "In how many seconds should the clock change",
+    "config.Show24Hours.name": "24 hours mode",
+    "config.Show24Hours.tooltip": "Switch between 12 and 24h mode"
+}

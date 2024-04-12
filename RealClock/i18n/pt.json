@@ -1,0 +1,8 @@
+{
+    "config.Enabled.name": "Mod habilitado",
+    "config.Enabled.tooltip": "Se você desativar, o relógio vanilla será mostrado e a velocidade do tempo não será alterada.",
+    "config.SecondsToMinutes.name": "Segundos pra minutos",
+    "config.SecondsToMinutes.tooltip": "Em quantos segundos o relógio deve mudar",
+    "config.Show24Hours.name": "Modo 24 horas",
+    "config.Show24Hours.tooltip": "Alternar entre o modo de 12 e 24 horas"
+}

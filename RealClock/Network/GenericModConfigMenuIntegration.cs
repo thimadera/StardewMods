@@ -1,4 +1,5 @@
-﻿using GenericModConfigMenu;
+using Force.DeepCloner;
+using GenericModConfigMenu;
 using StardewModdingAPI;
 
 namespace Thimadera.StardewMods.RealClock.Network
@@ -14,6 +15,8 @@ namespace Thimadera.StardewMods.RealClock.Network
             if (config is null)
                 return;
 
+            I18n.Init(helper.Translation);
+
             genericModConfigApi.Register(
                 mod,
                 reset: () => config = new ModConfig(),
@@ -22,22 +25,24 @@ namespace Thimadera.StardewMods.RealClock.Network
 
             genericModConfigApi.AddBoolOption(
                 mod,
-                name: () => "Mod Enabled",
+                name: I18n.Config_Enabled_Name,
+                tooltip: I18n.Config_Enabled_Tooltip,
                 getValue: () => config.Enabled,
                 setValue: value => config.Enabled = value
             );
 
             genericModConfigApi.AddNumberOption(
                 mod,
-                name: () => "Seconds to Minutes",
-                tooltip: () => "In how many seconds should the clock change",
+                name: I18n.Config_SecondsToMinutes_Name,
+                tooltip: I18n.Config_SecondsToMinutes_Tooltip,
                 getValue: () => config.SecondsToMinutes,
                 setValue: value => config.SecondsToMinutes = value
             );
 
             genericModConfigApi.AddBoolOption(
                 mod,
-                name: () => "24 hours mode",
+                name: I18n.Config_Show24Hours_Name,
+                tooltip: I18n.Config_Show24Hours_Tooltip,
                 getValue: () => config.Show24Hours,
                 setValue: value => config.Show24Hours = value
             );
