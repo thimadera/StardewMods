@@ -11,6 +11,11 @@ Welcome to my collection of SMAPI mods for Stardew Valley! Each mod enhances you
   
   **Download from [Nexus](https://www.nexusmods.com/stardewvalley/mods/21726)**
 
+* **[Stack Everything Redux](./StackEverythingRedux)**  
+  Enhance item stacking functionality with Furniture, tackle, and Wallpapers stacked up to 999! Streamline your storage and organization in Stardew Valley. 📦🌱
+  
+  **Download from [Nexus](https://www.nexusmods.com/stardewvalley/mods/22381)**
+
 ### Planned Mods
 * (Future mods will be listed here as they are developed.)
 
@@ -26,9 +31,10 @@ Your feedback is valuable! If you encounter any issues or have suggestions for i
 
 ## License
 
-These mods are open source under the [MIT License](LICENSE.txt). Feel free to use, modify, and share them according to the terms of the license.
+These mods are open source under the [MIT License](LICENSE). Feel free to use, modify, and share them according to the terms of the license.
 
 ## Special Thanks
 
 - **Adverserath:** For inspiring the Real Clock Mod.
+- **CatCattyCat:** For the original Stack Everything Mod.
 - **SMAPI Community:** For their support and contributions to Stardew Valley modding. 🌱✨
