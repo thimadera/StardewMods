@@ -4,7 +4,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches.Size
 {
     internal class AddToStackPatch
     {
-        public static int Prefix(Item __instance, ref Item otherStack, ref int __result)
+        public static bool Prefix(Item __instance, ref Item otherStack, ref int __result)
         {
             if (__instance.Stack is (-1) or 0)
             {
@@ -28,11 +28,10 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches.Size
                 {
                     _ = __instance.stack.Value - maxStack;
                     __instance.stack.Value = maxStack;
-                    return __result;
                 }
-                return 0;
+                __result = 0;
             }
-            return otherStack.Stack;
+            return false;
         }
     }
 }
