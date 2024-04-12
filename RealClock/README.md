@@ -38,7 +38,7 @@ The development of the Real Clock mod was initially inspired by adverserath's ["
 Feel free to leave feedback or suggestions on the [GitHub repository](https://github.com/thimadera/StardewMods/issues). Your input helps improve this mod! 🌟
 
 ## License:
-This mod is open source under the [MIT License](../LICENSE.txt). 📜
+This mod is open source under the [MIT License](../LICENSE). 📜
 
 ## Special Thanks:
 - Adverserath for the original inspiration.
