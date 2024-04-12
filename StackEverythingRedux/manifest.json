@@ -1,0 +1,10 @@
+{
+    "Name": "Stack Everything Redux",
+    "Author": "thimadera",
+    "Version": "1.0.0",
+    "Description": "Lets you stack Furniture, Tackle, and Wallpapers up to 999.",
+    "UniqueID": "thimadera.StackEverythingRedux",
+    "EntryDll": "StackEverythingRedux.dll",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [ "Nexus:22381" ]
+}

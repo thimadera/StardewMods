@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{775A00CB-7
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealClock", "RealClock\RealClock.csproj", "{5B9763B5-990C-446F-9037-CB78759939B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealClock", "RealClock\RealClock.csproj", "{5B9763B5-990C-446F-9037-CB78759939B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackEverythingRedux", "StackEverythingRedux\StackEverythingRedux.csproj", "{AA68FDC7-AEF2-4121-873E-D1E934620830}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{5B9763B5-990C-446F-9037-CB78759939B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B9763B5-990C-446F-9037-CB78759939B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B9763B5-990C-446F-9037-CB78759939B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA68FDC7-AEF2-4121-873E-D1E934620830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA68FDC7-AEF2-4121-873E-D1E934620830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA68FDC7-AEF2-4121-873E-D1E934620830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA68FDC7-AEF2-4121-873E-D1E934620830}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
