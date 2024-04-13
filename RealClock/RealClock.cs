@@ -16,24 +16,27 @@ namespace Thimadera.StardewMods.RealClock
         public int LastTimeInterval { get; set; }
         public override void Entry(IModHelper helper)
         {
-            this.Config = this.Helper.ReadConfig<ModConfig>();
+            Config = Helper.ReadConfig<ModConfig>();
 
-            helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
-            Helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
-            Helper.Events.Display.RenderedHud += this.OnRenderedHud;
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+            Helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            Helper.Events.Display.RenderedHud += OnRenderedHud;
         }
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             GenericModConfigMenuIntegration.AddConfig(
-                this.Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu"),
-                this.ModManifest,
-                this.Helper,
-                this.Config
+                Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu"),
+                ModManifest,
+                Helper,
+                Config
             );
         }
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
-            if (!Context.IsWorldReady || !Config.Enabled) return;
+            if (!Context.IsWorldReady || !Config.Enabled)
+            {
+                return;
+            }
 
             int delta;
             if (Game1.gameTimeInterval < LastTimeInterval)
@@ -53,7 +56,10 @@ namespace Thimadera.StardewMods.RealClock
 
         private void OnRenderedHud(object sender, RenderedHudEventArgs e)
         {
-            if (!Game1.displayHUD || !Config.Enabled) return;
+            if ((!Game1.displayHUD && !Game1.eventUp) || !Config.Enabled || Game1.gameMode != 3 || Game1.freezeControls || Game1.panMode || Game1.HostPaused || Game1.game1.takingMapScreenshot)
+            {
+                return;
+            }
 
             SpriteBatch b = e.SpriteBatch;
 
@@ -71,7 +77,7 @@ namespace Thimadera.StardewMods.RealClock
             SpriteFont font = Game1.dialogueFont;
 
             Vector2 txtSize = font.MeasureString(_timeText);
-            Vector2 timePosition = new(sourceRect.X * 0.55f - txtSize.X / 2f + ((timeShakeTimer > 0) ? Game1.random.Next(-2, 3) : 0), sourceRect.Y * (LocalizedContentManager.CurrentLanguageLatin ? 0.31f : 0.31f) - txtSize.Y / 2f + ((timeShakeTimer > 0) ? Game1.random.Next(-2, 3) : 0));
+            Vector2 timePosition = new((sourceRect.X * 0.55f) - (txtSize.X / 2f) + ((timeShakeTimer > 0) ? Game1.random.Next(-2, 3) : 0), (sourceRect.Y * (LocalizedContentManager.CurrentLanguageLatin ? 0.31f : 0.31f)) - (txtSize.Y / 2f) + ((timeShakeTimer > 0) ? Game1.random.Next(-2, 3) : 0));
             bool nofade = Game1.shouldTimePass() || Game1.fadeToBlack || Game1.currentGameTime.TotalGameTime.TotalMilliseconds % 2000.0 > 1000.0;
             Utility.drawTextWithShadow(b, _timeText, font, dayTimeMoneyBox.position + timePosition, (exactTime >= 2400) ? Color.Red : (Game1.textColor * (nofade ? 1f : 0.5f)));
         }
@@ -82,96 +88,70 @@ namespace Thimadera.StardewMods.RealClock
             string _pmString = Game1.content.LoadString("Strings\\StringsFromCSFiles:DayTimeMoneyBox.cs.10371");
 
             StringBuilder _timeText = new();
-            if (this.Config.Show24Hours)
+            if (Config.Show24Hours)
             {
                 if (exactTime / 100 % 24 <= 9)
                 {
-                    _timeText.Append('0');
+                    _ = _timeText.Append('0');
                 }
-                _timeText.AppendEx(exactTime / 100 % 24);
+                _ = _timeText.AppendEx(exactTime / 100 % 24);
             }
             else
             {
                 if (exactTime / 100 % 12 is <= 9 and > 0)
                 {
-                    _timeText.Append('0');
+                    _ = _timeText.Append('0');
                 }
-                if (exactTime / 100 % 12 == 0)
-                {
-                    _timeText.Append("12");
-                }
-                else
-                {
-                    _timeText.AppendEx(exactTime / 100 % 12);
-                }
+                _ = exactTime / 100 % 12 == 0 ? _timeText.Append("12") : _timeText.AppendEx(exactTime / 100 % 12);
             }
 
-            _timeText.Append(':');
+            _ = _timeText.Append(':');
 
             if (exactTime / 10 % 10 == 0)
             {
-                _timeText.Append('0');
+                _ = _timeText.Append('0');
             }
 
-            _timeText.AppendEx(exactTime % 100);
+            _ = _timeText.AppendEx(exactTime % 100);
 
             if (!Config.Show24Hours)
+            {
                 switch (LocalizedContentManager.CurrentLanguageCode)
                 {
                     case LocalizedContentManager.LanguageCode.en:
                     case LocalizedContentManager.LanguageCode.it:
-                        _timeText.Append(' ');
-                        if (exactTime is < 1200 or >= 2400)
-                        {
-                            _timeText.Append(_amString);
-                        }
-                        else
-                        {
-                            _timeText.Append(_pmString);
-                        }
+                        _ = _timeText.Append(' ');
+                        _ = exactTime is < 1200 or >= 2400 ? _timeText.Append(_amString) : _timeText.Append(_pmString);
                         break;
                     case LocalizedContentManager.LanguageCode.ko:
-                        if (exactTime is < 1200 or >= 2400)
-                        {
-                            _timeText.Append(_amString);
-                        }
-                        else
-                        {
-                            _timeText.Append(_pmString);
-                        }
+                        _ = exactTime is < 1200 or >= 2400 ? _timeText.Append(_amString) : _timeText.Append(_pmString);
                         break;
                     case LocalizedContentManager.LanguageCode.ja:
                         StringBuilder _temp = new();
-                        _temp.Append(_timeText);
-                        _timeText.Clear();
+                        _ = _temp.Append(_timeText);
+                        _ = _timeText.Clear();
                         if (exactTime is < 1200 or >= 2400)
                         {
-                            _timeText.Append(_amString);
-                            _timeText.Append(' ');
-                            _timeText.AppendEx(_temp);
+                            _ = _timeText.Append(_amString);
+                            _ = _timeText.Append(' ');
+                            _ = _timeText.AppendEx(_temp);
                         }
                         else
                         {
-                            _timeText.Append(_pmString);
-                            _timeText.Append(' ');
-                            _timeText.AppendEx(_temp);
+                            _ = _timeText.Append(_pmString);
+                            _ = _timeText.Append(' ');
+                            _ = _timeText.AppendEx(_temp);
                         }
                         break;
                     case LocalizedContentManager.LanguageCode.mod:
-                        _timeText.Clear();
-                        _timeText.Append(LocalizedContentManager.FormatTimeString(exactTime, LocalizedContentManager.CurrentModLanguage.ClockTimeFormat));
+                        _ = _timeText.Clear();
+                        _ = _timeText.Append(LocalizedContentManager.FormatTimeString(exactTime, LocalizedContentManager.CurrentModLanguage.ClockTimeFormat));
                         break;
                     default:
-                        if (exactTime is < 1200 or >= 2400)
-                        {
-                            _timeText.Append("am");
-                        }
-                        else
-                        {
-                            _timeText.Append("pm");
-                        }
+                        _ = exactTime is < 1200 or >= 2400 ? _timeText.Append("am") : _timeText.Append("pm");
                         break;
                 }
+            }
 
             return _timeText.ToString();
         }
