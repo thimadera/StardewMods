@@ -14,30 +14,36 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 
         private static void RemoveQueuedFurniture(DecoratableLocation instance, Guid guid)
         {
-            Farmer player = Game1.player;
-            if (!instance.furniture.ContainsGuid(guid))
+            Farmer who = Game1.player;
+            if (!instance.furniture.TryGetValue(guid, out Furniture furnitureItem) || !who.couldInventoryAcceptThisItem(furnitureItem))
             {
                 return;
             }
-
-            Furniture furniture = instance.furniture[guid];
-            if (!player.couldInventoryAcceptThisItem(furniture))
-            {
-                return;
-            }
-
-            furniture.performRemoveAction();
+            furnitureItem.performRemoveAction();
             instance.furniture.Remove(guid);
-
-            Item result = player.addItemToInventory(furniture);
-
-            if (result != null)
+            bool foundInToolbar = false;
+            for (int j = 0; j < 12; j++)
             {
-                _ = Game1.createItemDebris(result, player.Position, player.FacingDirection);
+                if (who.Items[j] != null && who.Items[j].QualifiedItemId == furnitureItem.QualifiedItemId)
+                {
+                    who.Items[j].Stack++;
+                    who.CurrentToolIndex = j;
+                    foundInToolbar = true;
+                    break;
+                }
+                else if (who.Items[j] == null)
+                {
+                    who.Items[j] = furnitureItem;
+                    who.CurrentToolIndex = j;
+                    foundInToolbar = true;
+                    break;
+                }
             }
-            else
+            if (!foundInToolbar)
             {
-                player.CurrentToolIndex = player.getIndexOfInventoryItem(furniture);
+                Item item = who.addItemToInventory(furnitureItem, 11);
+                _ = who.addItemToInventory(item);
+                who.CurrentToolIndex = 11;
             }
             instance.localSound("coin");
         }

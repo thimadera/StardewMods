@@ -5,11 +5,11 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
     internal class DoDoneFishingPatch
     {
-        private static StardewValley.Object tackle;
+        private static List<StardewValley.Object> tackles;
 
         public static void Prefix(FishingRod __instance)
         {
-            tackle = __instance.attachments?.Count > 1 ? __instance.attachments[1] : null;
+            tackles = __instance.GetTackle();
         }
 
         public static void Postfix(FishingRod __instance)
@@ -19,17 +19,22 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
                 return;
             }
 
-            if (tackle != null && __instance.attachments[1] == null)
+            int i = 1;
+            foreach (StardewValley.Object tackle in tackles)
             {
-                if (tackle.Stack > 1)
+                if (tackle != null && __instance.attachments[i] == null)
                 {
-                    tackle.Stack--;
-                    tackle.uses.Value = 0;
-                    __instance.attachments[1] = tackle;
+                    if (tackle.Stack > 1)
+                    {
+                        tackle.Stack--;
+                        tackle.uses.Value = 0;
+                        __instance.attachments[i] = tackle;
 
-                    string displayedMessage = new HUDMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:FishingRod.cs.14086")).message;
-                    _ = Game1.hudMessages.Remove(Game1.hudMessages.FirstOrDefault(item => item.message == displayedMessage));
+                        string displayedMessage = new HUDMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:FishingRod.cs.14086")).message;
+                        _ = Game1.hudMessages.Remove(Game1.hudMessages.FirstOrDefault(item => item.message == displayedMessage));
+                    }
                 }
+                i++;
             }
         }
     }

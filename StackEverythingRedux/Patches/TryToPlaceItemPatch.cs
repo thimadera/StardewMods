@@ -2,11 +2,14 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Objects;
 using StardewValley.TerrainFeatures;
+using Thimadera.StardewMods.StackEverythingRedux.ObjectCopiers;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
     internal class TryToPlaceItemPatch
     {
+        private static readonly ICopier<Furniture> furnitureCopier = new FurnitureCopier();
+
         public static bool Prefix(ref bool __result, GameLocation location, Item item, int x, int y)
         {
             __result = TryToPlaceItem(location, item, x, y);
@@ -19,33 +22,55 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
             {
                 return false;
             }
-
             Vector2 tileLocation = new(x / 64, y / 64);
-
             if (Utility.playerCanPlaceItemHere(location, item, x, y, Game1.player))
             {
+                if (item is Furniture)
+                {
+                    Game1.player.ActiveObject = null;
+                }
+
                 if (((StardewValley.Object)item).placementAction(location, x, y, Game1.player))
                 {
                     Game1.player.reduceActiveItemByOne();
                 }
-                else if (item is Furniture)
+                else if (item is Furniture furniture)
                 {
-                    Game1.player.ActiveObject = item as Furniture;
+                    Game1.player.ActiveObject = furniture;
                 }
                 else if (item is Wallpaper)
                 {
                     return false;
                 }
 
+                if (item is Furniture f && f.Stack > 1)
+                {
+                    Furniture copy = furnitureCopier.Copy(f);
+                    if (copy != null)
+                    {
+                        copy.TileLocation = f.TileLocation;
+                        copy.boundingBox.Value = f.boundingBox.Value;
+                        copy.defaultBoundingBox.Value = f.defaultBoundingBox.Value;
+                        copy.Stack = f.Stack - 1;
+                        copy.updateDrawPosition();
+                        Game1.player.ActiveObject = copy;
+                    }
+
+                    f.Stack = 1;
+                }
+
                 return true;
             }
             if (Utility.isPlacementForbiddenHere(location) && item != null && item.isPlaceable())
             {
-                Game1.showRedMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.13053"));
+                if (Game1.didPlayerJustClickAtAll(ignoreNonMouseHeldInput: true))
+                {
+                    Game1.showRedMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.13053"));
+                }
             }
-            else if (item is Furniture)
+            else if (item is Furniture furniture && Game1.didPlayerJustLeftClick(ignoreNonMouseHeldInput: true))
             {
-                switch ((item as Furniture).GetAdditionalFurniturePlacementStatus(location, x, y, Game1.player))
+                switch (furniture.GetAdditionalFurniturePlacementStatus(location, x, y, Game1.player))
                 {
                     case 1:
                         Game1.showRedMessage(Game1.content.LoadString("Strings\\StringsFromCSFiles:Furniture.cs.12629"));
@@ -81,7 +106,9 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
                         return false;
                 }
             }
+            _ = Utility.playerCanPlaceItemHere(location, item, x, y, Game1.player, show_error: true);
             return false;
         }
+
     }
 }
