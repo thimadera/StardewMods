@@ -1,0 +1,4 @@
+{
+    "config.MaxStackingNumber.name": "Número Máximo de Empilhamento",
+    "config.MaxStackingNumber.tooltip": "O número máximo de empilhamento, o padrão é 999."
+}

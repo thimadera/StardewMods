@@ -1,9 +1,12 @@
+using GenericModConfigMenu;
 using HarmonyLib;
 using StardewModdingAPI;
+using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Objects;
 using StardewValley.Tools;
 using System.Reflection;
+using Thimadera.StardewMods.StackEverythingRedux.Network;
 using Thimadera.StardewMods.StackEverythingRedux.ObjectCopiers;
 using Thimadera.StardewMods.StackEverythingRedux.Patches;
 using Thimadera.StardewMods.StackEverythingRedux.Patches.Size;
@@ -15,6 +18,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
         public static readonly Type[] PatchedTypes = [typeof(Furniture), typeof(Wallpaper), typeof(StardewValley.Object)];
         private readonly ICopier<Furniture> furnitureCopier = new FurnitureCopier();
         private readonly bool isInDecoratableLocation;
+        public static ModConfig Config;
 
         private IList<Furniture> lastKnownFurniture;
 
@@ -50,6 +54,18 @@ namespace Thimadera.StardewMods.StackEverythingRedux
             {
                 Patch(harmony, replacement.Key, replacement.Value.Item1, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic, replacement.Value.Item2);
             }
+            Config = Helper.ReadConfig<ModConfig>();
+
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+        }
+        private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+        {
+            GenericModConfigMenuIntegration.AddConfig(
+                Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu"),
+                ModManifest,
+                Helper,
+                Config
+            );
         }
 
         private void Patch(Harmony harmony, string originalName, Type originalType, BindingFlags originalSearch, Type patchType)

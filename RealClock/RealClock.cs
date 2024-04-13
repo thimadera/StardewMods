@@ -56,7 +56,7 @@ namespace Thimadera.StardewMods.RealClock
 
         private void OnRenderedHud(object sender, RenderedHudEventArgs e)
         {
-            if ((!Game1.displayHUD && !Game1.eventUp) || !Config.Enabled || Game1.gameMode != 3 || Game1.freezeControls || Game1.panMode || Game1.HostPaused || Game1.game1.takingMapScreenshot)
+            if (!Game1.displayHUD || Game1.eventUp || !Config.Enabled || Game1.gameMode != 3 || Game1.freezeControls || Game1.panMode || Game1.HostPaused || Game1.game1.takingMapScreenshot)
             {
                 return;
             }

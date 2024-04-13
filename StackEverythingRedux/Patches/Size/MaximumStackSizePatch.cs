@@ -4,7 +4,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches.Size
     {
         public static bool Prefix(ref int __result)
         {
-            __result = 999;
+            __result = StackEverythingRedux.Config.MaxStackingNumber;
 
             return false;
         }
