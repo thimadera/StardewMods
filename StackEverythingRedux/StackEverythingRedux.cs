@@ -1,4 +1,3 @@
-using GenericModConfigMenu;
 using HarmonyLib;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -6,33 +5,91 @@ using StardewValley;
 using StardewValley.Objects;
 using StardewValley.Tools;
 using System.Reflection;
+using Thimadera.StardewMods.StackEverythingRedux.Models;
 using Thimadera.StardewMods.StackEverythingRedux.Network;
-using Thimadera.StardewMods.StackEverythingRedux.ObjectCopiers;
 using Thimadera.StardewMods.StackEverythingRedux.Patches;
 using Thimadera.StardewMods.StackEverythingRedux.Patches.Size;
 
 namespace Thimadera.StardewMods.StackEverythingRedux
 {
-    public class StackEverythingRedux : Mod
+    internal class StackEverythingRedux : Mod
     {
-        public static readonly Type[] PatchedTypes = [typeof(Furniture), typeof(Wallpaper), typeof(StardewValley.Object)];
-        private readonly ICopier<Furniture> furnitureCopier = new FurnitureCopier();
-        private readonly bool isInDecoratableLocation;
-        public static ModConfig Config;
+        /// <summary>
+        /// These Convenience Properties are here so we don't have to keep passing a ref to Helper as params.
+        /// </summary>
+        #region Convenience Properties
+        internal static Mod Instance;
+        internal static ITranslationHelper I18n => Instance.Helper.Translation;
+        internal static IReflectionHelper Reflection => Instance.Helper.Reflection;
+        internal static IInputHelper Input => Instance.Helper.Input;
+        internal static IModEvents Events => Instance.Helper.Events;
+        internal static IModRegistry Registry => Instance.Helper.ModRegistry;
+        internal static ModConfig Config;
+        #endregion
 
-        private IList<Furniture> lastKnownFurniture;
+        private static StackSplit StackSplitRedux;
+
+        private Harmony harmony;
 
         public override void Entry(IModHelper helper)
         {
-            lastKnownFurniture = [];
-            Harmony harmony = new(ModManifest.UniqueID);
+            harmony = new(ModManifest.UniqueID);
+            Config = helper.ReadConfig<ModConfig>();
 
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+            PatchStackEverythingMod();
+
+            Instance = this;
+
+            if (DetectConflict())
+            {
+                return;
+            }
+
+            Log.Info($"{ModManifest.UniqueID} version {typeof(StackEverythingRedux).Assembly.GetName().Version} (API version {API.Version}) is loading...");
+            StackSplitRedux = new();
+        }
+        public override object GetApi()
+        {
+            return new API(StackSplitRedux);
+        }
+
+        public bool DetectConflict()
+        {
+            bool conflict = false;
+            foreach (string mID in StaticConfig.ConflictingMods)
+            {
+                if (Registry.IsLoaded(mID))
+                {
+                    Log.Alert($"{mID} detected!");
+                    conflict = true;
+                }
+            }
+            if (conflict)
+            {
+                Log.Error("Conflicting mods detected! Will abort loading this mod to prevent conflict/issues!");
+                Log.Error("Please upload the log to https://smapi.io/log and tell pepoluan about this!");
+            }
+            return conflict;
+        }
+        private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+        {
+            GenericModConfigMenuIntegration.AddConfig(
+                Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu"),
+                ModManifest,
+                Helper,
+                Config
+            );
+        }
+
+        private void PatchStackEverythingMod()
+        {
             IDictionary<string, Type> patchedTypeReplacements = new Dictionary<string, Type>
             {
                 [nameof(StardewValley.Object.maximumStackSize)] = typeof(MaximumStackSizePatch),
             };
 
-            IList<Type> typesToPatch = [.. PatchedTypes];
+            IList<Type> typesToPatch = [typeof(Furniture), typeof(Wallpaper), typeof(StardewValley.Object)];
 
             foreach (Type type in typesToPatch)
             {
@@ -54,18 +111,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux
             {
                 Patch(harmony, replacement.Key, replacement.Value.Item1, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic, replacement.Value.Item2);
             }
-            Config = Helper.ReadConfig<ModConfig>();
-
-            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
-        }
-        private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
-        {
-            GenericModConfigMenuIntegration.AddConfig(
-                Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu"),
-                ModManifest,
-                Helper,
-                Config
-            );
         }
 
         private void Patch(Harmony harmony, string originalName, Type originalType, BindingFlags originalSearch, Type patchType)

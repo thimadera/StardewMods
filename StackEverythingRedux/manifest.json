@@ -1,7 +1,7 @@
 {
     "Name": "Stack Everything Redux",
     "Author": "thimadera",
-    "Version": "1.0.2",
+    "Version": "1.0.3",
     "Description": "Lets you stack Furniture, Tackle, and Wallpapers like any other items.",
     "UniqueID": "thimadera.StackEverythingRedux",
     "EntryDll": "StackEverythingRedux.dll",
