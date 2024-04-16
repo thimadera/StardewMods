@@ -5,7 +5,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
 {
     public class ModConfig
     {
-        public bool EnableStackSplitRedux { get; set; } = false;
+        public bool EnableStackSplitRedux { get; set; } = true;
         public int MaxStackingNumber { get; set; } = 999;
         public int DefaultCraftingAmount { get; set; } = 1;
         public int DefaultShopAmount { get; set; } = 5;

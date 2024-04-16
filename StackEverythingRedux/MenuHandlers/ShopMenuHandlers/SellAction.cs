@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Menus;
+using SObject = StardewValley.Object;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
@@ -161,7 +162,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
             float sellPercentage = StackEverythingRedux.Reflection.GetField<float>(NativeShopMenu, "sellPercentage").GetValue();
 
             float pricef = sellPercentage * amount;
-            pricef *= item is StardewValley.Object sobj
+            pricef *= item is SObject sobj
                 ? sobj.sellToStorePrice()
                 : item.salePrice() * 0.5f
                 ;

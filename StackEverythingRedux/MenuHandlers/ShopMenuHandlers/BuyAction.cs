@@ -15,7 +15,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <summary>Constructs an instance.</summary>
         /// <param name="menu">The native shop menu.</param>
         /// <param name="item">The item to buy.</param>
-        [Obsolete]
         public BuyAction(ShopMenu menu, ISalable item)
             : base(menu, item)
         {
@@ -34,7 +33,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         }
 
         /// <summary>Verifies the conditions to perform the action.</summary>
-        [Obsolete]
         public override bool CanPerformAction()
         {
             if (_CanPerformAction is null)
@@ -57,7 +55,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <summary>Does the action.</summary>
         /// <param name="amount">Number of items.</param>
         /// <param name="clickLocation">Where the player clicked.</param>
-        [Obsolete]
         public override void PerformAction(int amount, Point clickLocation)
         {
             string pfx = $"[{nameof(BuyAction)}.{nameof(PerformAction)}]";
@@ -103,7 +100,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// Determine how many of an item player can purchase based on player's current monies/inventories and shop's current stock
         /// </summary>
         /// <returns>Maximum amount purchasable, cached</returns>
-        [Obsolete]
         public int GetMaxPurchasable()
         {
             if (_MaxPurchasable is null)
@@ -130,7 +126,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
                 {  // barter system. "monies" is now the wanted barter item in [2]
                     itemPrice = stockData.Price;
                     string barterItem = stockData.TradeItem;
-                    currentMonies = Game1.player.getItemCount(barterItem);
+                    currentMonies = Game1.player.Items.CountId(barterItem);
                     Log.TraceIfD($"{pfx} Barter system: player has {currentMonies} of item {barterItem}");
                 }
                 Log.Trace($"{pfx} chosen item price is {itemPrice}");
@@ -168,7 +164,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <param name="shopMenu">Native shop menu.</param>
         /// <param name="mouse">Mouse position.</param>
         /// <returns>The instance or null if no valid item was selected.</returns>
-        [Obsolete]
         public static ShopAction Create(ShopMenu shopMenu, Point mouse)
         {
             ISalable item = GetClickedShopItem(shopMenu, mouse);

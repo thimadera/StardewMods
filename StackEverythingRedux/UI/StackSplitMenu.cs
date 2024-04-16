@@ -52,7 +52,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
 
             InputTextBox inputBox = InputTextBox = new InputTextBox(CHAR_LIMIT, heldStackAmount.ToString())
             {
-                Position = new Vector2(Game1.getMouseX(), Game1.getMouseY() - Game1.tileSize),
+                Position = new Vector2(Game1.getOldMouseX(true), Game1.getOldMouseY(true) - Game1.tileSize),
                 Extent = new Vector2(Game1.tileSize * 2, Game1.tileSize),
                 NumbersOnly = true,
                 Selected = true,
@@ -103,7 +103,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
 
             b.Draw(
                 Game1.mouseCursors,
-                new Vector2(Game1.getMouseX(), Game1.getMouseY()),
+                new Vector2(Game1.getOldMouseX(true), Game1.getOldMouseY(true)),
                 MouseRect,
                 MouseTransparency,
                 0f,

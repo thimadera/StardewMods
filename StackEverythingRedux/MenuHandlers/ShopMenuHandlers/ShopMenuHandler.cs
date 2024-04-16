@@ -26,7 +26,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
 
         /// <summary>Main event that derived handlers use to setup necessary hooks and other things needed to take over how the stack is split.</summary>
         /// <returns>If the input was handled or consumed.</returns>
-        [Obsolete]
         protected override EInputHandled OpenSplitMenu()
         {
             Log.TraceIfD($"[{nameof(ShopMenuHandler)}.{nameof(OpenSplitMenu)}] Entered");

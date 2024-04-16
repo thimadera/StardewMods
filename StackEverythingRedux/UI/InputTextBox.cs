@@ -70,7 +70,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
 
             // Create a 1x1 texture that we will scale up to draw the highlight
             HighlightTexture = new Texture2D(Game1.graphics.GraphicsDevice, 1, 1);
-            Color[] data = new Color[1] { StaticConfig.HighlightColor };
+            Color[] data = [StaticConfig.HighlightColor];
             HighlightTexture.SetData(data);
 
             IsTextHighlighted = HighlightByDefault;
@@ -114,7 +114,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
         }
 
         /// <summary>Callback for when 'command' characters are recieved.</summary>
-        /// <param name="command">The command recieved.</param>
+        /// <param name="command">The command received.</param>
         public void RecieveCommandInput(char command)
         {
             // Cast the ascii value to the readable enum value

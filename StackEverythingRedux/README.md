@@ -1,18 +1,18 @@
 # Stack Everything Redux for Stardew Valley 📦🌱
 
-**Stable Version:** 1.0.2
+**Stable Version:** 1.0.3
 
 ## Description:
-The Stack Everything Redux mod enhances Stardew Valley's item stacking functionality, allowing Furniture, tackle, and Wallpapers to be stacked up to 999 for streamlined storage and organization.
+The Stack Everything Redux mod enhances Stardew Valley's item stacking functionality, allowing Furniture, tackle, and Wallpapers to be stacked up to 999 for streamlined storage and organization. This mod also introduces new features to enhance item handling and stacking mechanics.
 
 ## Key Features 🌟
-- **Expanded Stacking Capability**: Stack Furniture, tackle, and Wallpapers up to 999 for efficient item management.
-- **Updated Compatibility**: Updated for compatibility with the latest versions of Stardew Valley.
-- **Bug Fixes and Enhancements**: Addressing previous mod limitations for improved stability and performance.
+- **Expanded Stacking Capability**: Stack items that are not stackable by default, including Furniture, tackle, and Wallpapers.
+- **Modify Default Max Amount**: Customize the default maximum stack amount beyond 999 for improved item management.
+- **Enhanced Input Selection**: Adds a convenient input method (SHIFT+Right Click) to select desired amounts when buying, crafting, cooking, or splitting stacked items.
 
 ## Installation:
 1. **Download**:
-   - Download the mod files from [Nexus Mods](https://www.nexusmods.com/stardewvalley/mods/22381).
+   - Get the mod files from [Nexus Mods](https://www.nexusmods.com/stardewvalley/mods/22381).
 2. **Install**:
    - Unzip the downloaded files into your Stardew Valley mods folder.
 3. **Configuration**:
@@ -22,7 +22,7 @@ The Stack Everything Redux mod enhances Stardew Valley's item stacking functiona
 This mod uses [Harmony](https://github.com/pardeike/Harmony) to:
 - Replace `StardewValley.Object.maximumStackSize` to allow stacking up to 999.
 - Improve stacking behavior for Furniture, tackle, and Wallpapers.
-- Enhance item management and stacking functionality.
+- Introduce input selection for easier item handling.
 
 ## Known Issues:
 - Certain items like tools, hats, rings, boots, and weapons remain unstackable due to technical constraints.

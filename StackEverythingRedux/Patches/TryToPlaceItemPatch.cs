@@ -3,6 +3,7 @@ using StardewValley;
 using StardewValley.Objects;
 using StardewValley.TerrainFeatures;
 using Thimadera.StardewMods.StackEverythingRedux.ObjectCopiers;
+using SObject = StardewValley.Object;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
@@ -30,7 +31,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
                     Game1.player.ActiveObject = null;
                 }
 
-                if (((StardewValley.Object)item).placementAction(location, x, y, Game1.player))
+                if (((SObject)item).placementAction(location, x, y, Game1.player))
                 {
                     Game1.player.reduceActiveItemByOne();
                 }

@@ -1,8 +1,8 @@
 {
     "Name": "Stack Everything Redux",
     "Author": "thimadera",
-    "Version": "1.0.3-beta.2",
-    "Description": "Lets you stack Furniture, Tackle, and Wallpapers like any other items.",
+    "Version": "1.0.3",
+    "Description": "Enhance stacking in Stardew Valley beyond 999! Customize stacks and simplify item handling.",
     "UniqueID": "thimadera.StackEverythingRedux",
     "EntryDll": "StackEverythingRedux.dll",
     "MinimumApiVersion": "4.0.0",

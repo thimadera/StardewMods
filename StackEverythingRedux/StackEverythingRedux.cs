@@ -9,6 +9,7 @@ using Thimadera.StardewMods.StackEverythingRedux.Models;
 using Thimadera.StardewMods.StackEverythingRedux.Network;
 using Thimadera.StardewMods.StackEverythingRedux.Patches;
 using Thimadera.StardewMods.StackEverythingRedux.Patches.Size;
+using SObject = StardewValley.Object;
 
 namespace Thimadera.StardewMods.StackEverythingRedux
 {
@@ -54,7 +55,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
             return new API(StackSplitRedux);
         }
 
-        public bool DetectConflict()
+        public static bool DetectConflict()
         {
             bool conflict = false;
             foreach (string mID in StaticConfig.ConflictingMods)
@@ -86,10 +87,10 @@ namespace Thimadera.StardewMods.StackEverythingRedux
         {
             IDictionary<string, Type> patchedTypeReplacements = new Dictionary<string, Type>
             {
-                [nameof(StardewValley.Object.maximumStackSize)] = typeof(MaximumStackSizePatch),
+                [nameof(SObject.maximumStackSize)] = typeof(MaximumStackSizePatch),
             };
 
-            IList<Type> typesToPatch = [typeof(Furniture), typeof(Wallpaper), typeof(StardewValley.Object)];
+            IList<Type> typesToPatch = [typeof(Furniture), typeof(Wallpaper), typeof(SObject)];
 
             foreach (Type type in typesToPatch)
             {
@@ -104,7 +105,8 @@ namespace Thimadera.StardewMods.StackEverythingRedux
                 {"removeQueuedFurniture", new Tuple<Type, Type>(typeof(GameLocation), typeof(FurniturePickupPatch))},
                 {nameof(Utility.tryToPlaceItem), new Tuple<Type, Type>(typeof(Utility), typeof(TryToPlaceItemPatch))},
                 {"doDoneFishing", new Tuple<Type, Type>(typeof(FishingRod), typeof(DoDoneFishingPatch))},
-                {nameof(Item.canStackWith), new Tuple<Type, Type>(typeof(Item), typeof(CanStackWithPatch))}
+                {nameof(Item.canStackWith), new Tuple<Type, Type>(typeof(Item), typeof(CanStackWithPatch))},
+                {nameof(Tool.attach), new Tuple<Type, Type>(typeof(Tool), typeof(AttachPatch))}
             };
 
             foreach (KeyValuePair<string, Tuple<Type, Type>> replacement in otherReplacements)
