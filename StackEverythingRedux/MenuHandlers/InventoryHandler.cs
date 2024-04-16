@@ -4,7 +4,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
+namespace StackEverythingRedux.MenuHandlers
 {
     public class InventoryHandler
     {
@@ -31,7 +31,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
         private IReflectedField<Item> HoveredItemField;
 
         /// <summary>Currently hovered item in the inventory.</summary>
-        private Item? HoveredItem;
+        private Item HoveredItem;
 
         /// <summary>Null constructor that currently only invokes the base null constructor</summary>
         public InventoryHandler()

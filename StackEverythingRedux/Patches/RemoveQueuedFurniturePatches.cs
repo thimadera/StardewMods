@@ -2,7 +2,7 @@ using StardewValley;
 using StardewValley.Locations;
 using StardewValley.Objects;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches
+namespace StackEverythingRedux.Patches
 {
     internal class RemoveQueuedFurniturePatches
     {

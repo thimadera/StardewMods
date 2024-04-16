@@ -1,7 +1,7 @@
+using StackEverythingRedux.Models;
 using StardewModdingAPI;
-using Thimadera.StardewMods.StackEverythingRedux.Models;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Network
+namespace StackEverythingRedux.Network
 {
     internal class GenericModConfigMenuIntegration
     {

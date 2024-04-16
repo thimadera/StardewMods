@@ -1,6 +1,6 @@
 using StardewValley.Menus;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
 {
     public interface IGameMenuPageHandler
     {

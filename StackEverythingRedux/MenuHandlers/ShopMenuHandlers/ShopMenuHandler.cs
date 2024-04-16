@@ -1,14 +1,13 @@
 using StardewValley.Menus;
-using Thimadera.StardewMods.StackEverythingRedux.UI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     public class ShopMenuHandler : BaseMenuHandler<ShopMenu>
     {
         public const float RIGHT_CLICK_POLLING_INTVL = 300f;
 
         /// <summary>The shop action for the current operation.</summary>
-        private IShopAction? CurrentShopAction = null;
+        private IShopAction CurrentShopAction = null;
 
         /// <summary>Null constructor that currently only invokes the base null constructor</summary>
         public ShopMenuHandler()

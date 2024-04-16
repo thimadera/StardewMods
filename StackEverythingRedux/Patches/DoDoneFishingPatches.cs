@@ -2,11 +2,11 @@ using StardewValley;
 using StardewValley.Tools;
 using SObject = StardewValley.Object;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches
+namespace StackEverythingRedux.Patches
 {
     internal class DoDoneFishingPatches
     {
-        private static List<SObject>? tackles;
+        private static List<SObject> tackles = [];
 
         public static void Prefix(FishingRod __instance)
         {

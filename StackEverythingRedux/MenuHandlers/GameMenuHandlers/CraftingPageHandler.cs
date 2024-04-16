@@ -3,7 +3,7 @@ using StardewValley;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
 {
     public class CraftingPageHandler : GameMenuPageHandler<CraftingPage>
     {
@@ -57,7 +57,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
             WasInventoryClicked = false;
 
             CraftingRecipe hoverRecipe = StackEverythingRedux.Reflection.GetField<CraftingRecipe>(MenuPage, "hoverRecipe").GetValue();
-            Item? hoveredItem = hoverRecipe?.createItem();
+            Item hoveredItem = hoverRecipe?.createItem();
             Item heldItem = StackEverythingRedux.Reflection.GetField<Item>(MenuPage, "heldItem").GetValue();
 
             // If we're holding an item already then it must stack with the item we want to craft.
@@ -69,7 +69,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
             // We might need to put in some mutex-wrangling here if there' a problem with MultiPlayer desyncs...
 
             // Grab ingredients in additional places (if any)
-            List<Item>? extraItems = null;
+            List<Item> extraItems = null;
             if (MenuPage._materialContainers is not null)
             {
                 extraItems = [];

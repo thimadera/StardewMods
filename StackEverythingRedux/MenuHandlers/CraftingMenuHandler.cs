@@ -1,8 +1,7 @@
+using StackEverythingRedux.MenuHandlers.GameMenuHandlers;
 using StardewValley.Menus;
-using Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandlers;
-using Thimadera.StardewMods.StackEverythingRedux.UI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
+namespace StackEverythingRedux.MenuHandlers
 {
     /// <summary>This class is for handling the standalone crafting pages (aka cooking).</summary>
     internal class CraftingMenuHandler : BaseMenuHandler<CraftingPage>

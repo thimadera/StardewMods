@@ -1,7 +1,7 @@
 using StardewValley;
 using StardewValley.Objects;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches
+namespace StackEverythingRedux.Patches
 {
     internal class CanStackWithPatches
     {

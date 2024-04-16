@@ -3,7 +3,7 @@ using StardewValley;
 using StardewValley.Menus;
 using SObject = StardewValley.Object;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     public class SellAction : ShopAction
     {
@@ -175,7 +175,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <param name="shopMenu">Native shop menu.</param>
         /// <param name="mouse">Mouse position.</param>
         /// <returns>The instance or null if no valid item was selected.</returns>
-        public static ShopAction? Create(ShopMenu shopMenu, Point mouse)
+        public static ShopAction Create(ShopMenu shopMenu, Point mouse)
         {
             InventoryMenu inventory = shopMenu.inventory;
             Item item = inventory.getItemAt(mouse.X, mouse.Y);

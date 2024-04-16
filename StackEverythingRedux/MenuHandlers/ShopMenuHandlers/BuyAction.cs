@@ -3,7 +3,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     internal class BuyAction : ShopAction
     {
@@ -141,7 +141,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <param name="shopMenu">Native shop menu.</param>
         /// <param name="p">Mouse location.</param>
         /// <returns>The clicked item or null if none was clicked.</returns>
-        public static ISalable? GetClickedShopItem(ShopMenu shopMenu, Point p)
+        public static ISalable GetClickedShopItem(ShopMenu shopMenu, Point p)
         {
             List<ISalable> itemsForSale = shopMenu.forSale;
             int index = GetClickedItemIndex(shopMenu, p);
@@ -164,7 +164,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <param name="shopMenu">Native shop menu.</param>
         /// <param name="mouse">Mouse position.</param>
         /// <returns>The instance or null if no valid item was selected.</returns>
-        public static ShopAction? Create(ShopMenu shopMenu, Point mouse)
+        public static ShopAction Create(ShopMenu shopMenu, Point mouse)
         {
             ISalable item = GetClickedShopItem(shopMenu, mouse);
             return item != null ? new BuyAction(shopMenu, item) : null;

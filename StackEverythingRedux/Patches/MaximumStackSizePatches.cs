@@ -1,4 +1,4 @@
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches
+namespace StackEverythingRedux.Patches
 {
     internal class MaximumStackSizePatches
     {

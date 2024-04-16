@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     public interface IShopAction
     {

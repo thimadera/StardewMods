@@ -1,6 +1,6 @@
 using StardewModdingAPI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux
+namespace StackEverythingRedux
 {
 
     public static class Log

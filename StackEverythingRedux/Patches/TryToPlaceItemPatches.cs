@@ -2,15 +2,12 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Objects;
 using StardewValley.TerrainFeatures;
-using Thimadera.StardewMods.StackEverythingRedux.ObjectCopiers;
 using SObject = StardewValley.Object;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches
+namespace StackEverythingRedux.Patches
 {
     internal class TryToPlaceItemPatches
     {
-        private static readonly ICopier<Furniture> furnitureCopier = new FurnitureCopier();
-
         public static bool Prefix(ref bool __result, GameLocation location, Item item, int x, int y)
         {
             __result = TryToPlaceItem(location, item, x, y);
@@ -46,7 +43,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 
                 if (item is Furniture f && f.Stack > 1)
                 {
-                    Furniture copy = furnitureCopier.Copy(f);
+                    Furniture copy = Copy(f);
                     if (copy != null)
                     {
                         copy.TileLocation = f.TileLocation;
@@ -111,5 +108,18 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Patches
             return false;
         }
 
+        private static Furniture Copy(Furniture obj)
+        {
+            Furniture furniture = obj.getOne() as Furniture;
+
+            int attempts = 0;
+            while (!furniture.boundingBox.Value.Equals(obj.boundingBox.Value) && attempts < 8)
+            {
+                furniture.rotate();
+                attempts++;
+            }
+
+            return furniture;
+        }
     }
 }

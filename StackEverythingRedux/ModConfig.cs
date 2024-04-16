@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux
+namespace StackEverythingRedux
 {
     public class ModConfig
     {

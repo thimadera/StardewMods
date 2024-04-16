@@ -1,11 +1,12 @@
-using Thimadera.StardewMods.StackEverythingRedux.MenuHandlers;
+using StackEverythingRedux.MenuHandlers;
 
-namespace Thimadera.StardewMods.StackEverythingRedux
+namespace StackEverythingRedux
 {
     internal static class OtherMods
     {
         //                         mod_ID    menu_class_name  type_of_handler
         private static readonly Dictionary<string, List<Tuple<string, Type>>> MenuAndHandlerByMods = [];
+
         private static void Add(string modUniqueID, params object[] args)
         {
             List<Tuple<string, Type>> lst = [];
@@ -16,6 +17,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
 
             MenuAndHandlerByMods[modUniqueID] = lst;
         }
+
         static OtherMods()
         {
             Add(
@@ -26,6 +28,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
                 );
             // Repeat calls to Add() as necessary
         }
+
         public static IEnumerable<KeyValuePair<string, List<Tuple<string, Type>>>> AsEnumerable()
         {
             return MenuAndHandlerByMods.AsEnumerable();

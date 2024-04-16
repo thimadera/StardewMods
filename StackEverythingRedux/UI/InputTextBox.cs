@@ -6,7 +6,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.UI
+namespace StackEverythingRedux.UI
 {
     /// <summary>Custom implementation of the NameMenu input text box that has additional functionality.</summary>
     public class InputTextBox : IKeyboardSubscriber
