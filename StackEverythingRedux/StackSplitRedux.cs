@@ -242,6 +242,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
 
             StackEverythingRedux.Events.Input.ButtonPressed += OnButtonPressed;
             StackEverythingRedux.Events.Display.Rendered += OnRendered;
+            StackEverythingRedux.Events.Input.CursorMoved += OnCursorMoved;
             IsSubscribed = true;
         }
 
@@ -255,6 +256,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
 
             StackEverythingRedux.Events.Input.ButtonPressed -= OnButtonPressed;
             StackEverythingRedux.Events.Display.Rendered -= OnRendered;
+            StackEverythingRedux.Events.Input.CursorMoved -= OnCursorMoved;
             IsSubscribed = false;
         }
 
@@ -303,6 +305,11 @@ namespace Thimadera.StardewMods.StackEverythingRedux
         {
             // tell the current handler to draw the split menu if it's active
             CurrentMenuHandler?.Draw(Game1.spriteBatch);
+        }
+
+        private void OnCursorMoved(object sender, CursorMovedEventArgs e)
+        {
+            CurrentMenuHandler?.PerformHoverAction(Game1.getMouseX(true), Game1.getMouseY(true));
         }
 
         private void InterceptOtherMods()

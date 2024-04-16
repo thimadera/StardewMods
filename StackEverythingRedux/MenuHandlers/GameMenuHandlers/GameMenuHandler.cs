@@ -83,6 +83,8 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
         /// <returns>If the input was handled or consumed.</returns>
         protected override EInputHandled InventoryClicked()
         {
+            if (CurrentPageHandler == null) { return new(); }
+
             EInputHandled handled = CurrentPageHandler.InventoryClicked(out int stackAmount);
             if (handled != EInputHandled.NotHandled)
             {

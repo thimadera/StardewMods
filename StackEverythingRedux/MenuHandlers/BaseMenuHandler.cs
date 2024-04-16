@@ -104,6 +104,12 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
             SplitMenu?.Draw(spriteBatch);
         }
 
+        /// <summary>Try to perform hover action on split menu.</summary>
+        public virtual void PerformHoverAction(int x, int y)
+        {
+            SplitMenu?.PerformHoverAction(x, y);
+        }
+
         /// <summary>Handle user input.</summary>
         /// <param name="button">The pressed button.</param>
         public EInputHandled HandleInput(SButton button)

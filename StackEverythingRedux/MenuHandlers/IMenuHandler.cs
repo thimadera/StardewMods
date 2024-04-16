@@ -37,6 +37,9 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
         /// <summary>Draws the split menu.</summary>
         void Draw(SpriteBatch spriteBatch);
 
+        /// <summary>Try to perform hover action on split menu.</summary>
+        void PerformHoverAction(int x, int y);
+
         /// <summary>Tells the handler to close the split menu.</summary>
         void CloseSplitMenu();
 

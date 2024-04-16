@@ -52,11 +52,12 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
 
             InputTextBox inputBox = InputTextBox = new InputTextBox(CHAR_LIMIT, heldStackAmount.ToString())
             {
-                Position = new Vector2(Game1.getOldMouseX(true), Game1.getOldMouseY(true) - Game1.tileSize),
+                Position = new Vector2(Game1.getMouseX(true), Game1.getMouseY(true) - Game1.tileSize),
                 Extent = new Vector2(Game1.tileSize * 2, Game1.tileSize),
                 NumbersOnly = true,
                 Selected = true,
             };
+
             inputBox.OnSubmit += (sender) => Submit(sender.Text);
             Game1.keyboardDispatcher.Subscriber = inputBox;
 
@@ -93,6 +94,10 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
         /// <param name="b">Spritebatch to draw with.</param>
         public void Draw(SpriteBatch b)
         {
+            b.End();
+            Game1.SetRenderTarget(Game1.game1.uiScreen);
+            b.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp);
+
             InputTextBox.Draw(b);
             OKButton.draw(b);
 
@@ -103,7 +108,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
 
             b.Draw(
                 Game1.mouseCursors,
-                new Vector2(Game1.getOldMouseX(true), Game1.getOldMouseY(true)),
+                new Vector2(Game1.getMouseX(true), Game1.getMouseY(true)),
                 MouseRect,
                 MouseTransparency,
                 0f,
@@ -111,6 +116,14 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
                 MouseScale,
                 SpriteEffects.None,
                 1f);
+        }
+
+        /// <summary>Try to perform hover action on split menu.</summary>
+        public void PerformHoverAction(int x, int y)
+        {
+            OKButton.scale = OKButton.containsPoint(x, y)
+                ? Math.Min(OKButton.scale + 0.02f, OKButton.baseScale + 0.2f)
+                : Math.Max(OKButton.scale - 0.02f, OKButton.baseScale);
         }
 
         /// <summary>Handles left clicks to check if the OK button was clicked.</summary>
