@@ -1,9 +1,10 @@
-# Stack Everything Redux for Stardew Valley 📦🌱
+# 📦 Stack Everything Redux for Stardew Valley 🌱
 
-**Stable Version:** 1.0.3
+**Version:** 1.0.3
 
 ## Description:
-The Stack Everything Redux mod enhances Stardew Valley's item stacking functionality, allowing Furniture, tackle, and Wallpapers to be stacked up to 999 for streamlined storage and organization. This mod also introduces new features to enhance item handling and stacking mechanics.
+**Stack Everything Redux** is an awesome mod that supercharges your item stacking experience in Stardew Valley! Say goodbye to clutter because now you can stack all sorts of items that normally don't stack, like **Furniture**, **Tackles**, and **Wallpapers**. Not only that, you can go beyond the default limit of 999 by customizing the max stack amount in the mod's settings.
+— But wait, there's more! This mod also introduces a handy input method (**SHIFT+Right Click**) for easily selecting the amount you need when buying, crafting, cooking, or splitting stacked items. It's like magic for your inventory!
 
 ## Key Features 🌟
 - **Expanded Stacking Capability**: Stack items that are not stackable by default, including Furniture, tackle, and Wallpapers.
@@ -27,8 +28,10 @@ This mod uses [Harmony](https://github.com/pardeike/Harmony) to:
 ## Known Issues:
 - Certain items like tools, hats, rings, boots, and weapons remain unstackable due to technical constraints.
 
-## Original Mod:
-Explore the [Stack Everything mod](http://www.nexusmods.com/stardewvalley/mods/2053?) by its creator for additional context and history.
+## Inspiration & Credits:
+The development of **Stack Everything Redux** was inspired by [CatCattyCat](https://www.nexusmods.com/stardewvalley/users/44734342)'s "[Stack Everything](https://www.nexusmods.com/stardewvalley/mods/2053)" mod and [pepoluan](https://www.nexusmods.com/stardewvalley/users/27024274)'s "[Stack Split Redux](https://www.nexusmods.com/stardewvalley/mods/8967)" mod.
+
+Special thanks to [kdau](https://www.kdau.com/) for the [web app](https://www.kdau.com/scrollish) used to create the banner image.
 
 ## Feedback and Support:
 Feel free to leave feedback or report bugs on the [GitHub repository](https://github.com/thimadera/StardewMods/issues). Your feedback helps improve this mod! 🌟
@@ -38,6 +41,6 @@ This mod is open source under the [MIT License](../LICENSE). 📜
 
 ## Credits:
 - Special thanks to the Stardew Valley modding community.
-- Inspired by the original Stack Everything mod.
+- Inspired by [Stack Everything](https://www.nexusmods.com/stardewvalley/mods/2053) and [Stack Split Redux](https://www.nexusmods.com/stardewvalley/mods/8967).
 
-Happy stacking! 📦🌾
+Your feedback is invaluable — happy farming! 🌾🐓
