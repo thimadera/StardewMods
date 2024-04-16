@@ -2,9 +2,9 @@ using StardewValley;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
-    internal class AttachPatch
+    internal class AttachPatches
     {
-        private static StardewValley.Object tackleToAttach;
+        private static StardewValley.Object? tackleToAttach;
         private static int tackleToAttachStack;
 
         public static void Prefix(Tool __instance, StardewValley.Object o)

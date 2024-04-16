@@ -4,9 +4,9 @@ using SObject = StardewValley.Object;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
-    internal class DoDoneFishingPatch
+    internal class DoDoneFishingPatches
     {
-        private static List<SObject> tackles;
+        private static List<SObject>? tackles;
 
         public static void Prefix(FishingRod __instance)
         {

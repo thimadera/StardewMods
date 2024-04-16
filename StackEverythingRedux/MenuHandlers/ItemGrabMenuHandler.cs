@@ -9,10 +9,10 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
     public class ItemGrabMenuHandler : BaseMenuHandler<ItemGrabMenu>
     {
         /// <summary>Native player inventory menu.</summary>
-        private InventoryMenu PlayerInventoryMenu = null;
+        private InventoryMenu? PlayerInventoryMenu = null;
 
         /// <summary>Native shop inventory menu.</summary>
-        private InventoryMenu ItemsToGrabMenu = null;
+        private InventoryMenu? ItemsToGrabMenu = null;
 
         /// <summary>If the callbacks have been hooked yet so we don't do it unnecessarily.</summary>
         private bool CallbacksHooked = false;
@@ -24,7 +24,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
         private ItemGrabMenu.behaviorOnItemSelect OriginalItemGrabCallback;
 
         /// <summary>The item being hovered when the split menu is opened.</summary>
-        private Item HoverItem = null;
+        private Item? HoverItem = null;
 
         /// <summary>The amount we wish to buy/sell.</summary>
         private int StackAmount = 0;

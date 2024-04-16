@@ -8,7 +8,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         public const float RIGHT_CLICK_POLLING_INTVL = 300f;
 
         /// <summary>The shop action for the current operation.</summary>
-        private IShopAction CurrentShopAction = null;
+        private IShopAction? CurrentShopAction = null;
 
         /// <summary>Null constructor that currently only invokes the base null constructor</summary>
         public ShopMenuHandler()

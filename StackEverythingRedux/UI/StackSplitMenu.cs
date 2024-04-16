@@ -23,10 +23,10 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
         public string Title { get; set; } = StackEverythingRedux.I18n.Get("ui.stacksplitmenu.title");
 
         /// <summary>The input text box.</summary>
-        private InputTextBox InputTextBox;
+        private InputTextBox? InputTextBox;
 
         /// <summary>The OK button.</summary>
-        private ClickableTextureComponent OKButton;
+        private ClickableTextureComponent? OKButton;
 
         /// <summary>Callback to execute when the text is submitted.</summary>
         private readonly TextSubmittedDelegate OnTextSubmitted;

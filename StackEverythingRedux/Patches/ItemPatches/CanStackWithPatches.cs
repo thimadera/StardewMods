@@ -3,7 +3,7 @@ using StardewValley.Objects;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
-    internal class CanStackWithPatch
+    internal class CanStackWithPatches
     {
         public static bool Prefix(Item __instance, ref bool __result, ISalable other)
         {

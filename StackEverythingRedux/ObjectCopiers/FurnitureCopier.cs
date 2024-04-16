@@ -6,7 +6,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.ObjectCopiers
     {
         public Furniture Copy(Furniture obj)
         {
-            Furniture furniture = obj.getOne() as Furniture;
+            Furniture? furniture = obj.getOne() as Furniture;
 
             int attempts = 0;
             while (!furniture.boundingBox.Value.Equals(obj.boundingBox.Value) && attempts < 8)

@@ -4,7 +4,7 @@ using StardewValley.Objects;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
-    internal class FurniturePickupPatch
+    internal class RemoveQueuedFurniturePatches
     {
         public static bool Prefix(DecoratableLocation __instance, Guid guid)
         {

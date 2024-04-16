@@ -17,7 +17,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
         protected readonly InventoryHandler InvHandler = new();
 
         /// <summary>Split menu we display for the user to input the desired stack size.</summary>
-        protected StackSplitMenu SplitMenu;
+        protected StackSplitMenu? SplitMenu;
 
         /// <summary>Native game menu this handler is for.</summary>
         protected TMenuType NativeMenu { get; private set; }
@@ -273,7 +273,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
                 // (known by inspecting them class defs in the game code).
                 // Since there is no Interface defined in the game code that guarantees the existence of .inventory & .hoveredItem,
                 // we either have to cast them explicitly, or just use Reflection to retrieve.
-                InventoryMenu inventoryMenu = StackEverythingRedux.Reflection.GetField<IClickableMenu>(NativeMenu, "inventory").GetValue() as InventoryMenu;
+                InventoryMenu? inventoryMenu = StackEverythingRedux.Reflection.GetField<IClickableMenu>(NativeMenu, "inventory").GetValue() as InventoryMenu;
                 IReflectedField<Item> hoveredItemField = StackEverythingRedux.Reflection.GetField<Item>(NativeMenu, "hoveredItem");
 
                 InvHandler.Init(inventoryMenu, hoveredItemField);

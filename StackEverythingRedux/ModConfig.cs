@@ -25,9 +25,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux
         /// <remarks>To allow time for other mods to manipulate inventories</remarks>
         internal static readonly int SplitMenuOpenDelayTicks = 2;
 
-        /// <summary>Mods that we are conflicting with. If found, abort this mod</summary>
-        internal static readonly string[] ConflictingMods = ["tstaples.StackSplitX"];
-
         /// <summary>Text color when the text is highlighted. This should contrast with HighlightColor.</summary>
         internal static readonly Color HighlightTextColor = Color.White;
 

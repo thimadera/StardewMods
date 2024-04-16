@@ -16,7 +16,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux
         private bool IsSubscribed = false;
 
         /// <summary>The handler for the current menu.</summary>
-        private IMenuHandler CurrentMenuHandler;
+        private IMenuHandler? CurrentMenuHandler;
 
         /// <summary>Used to avoid resize events sent to menu changed.</summary>
         private bool WasResizeEvent = false;

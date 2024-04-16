@@ -16,7 +16,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
             };
 
         /// <summary>The handler for the current tab,</summary>
-        private IGameMenuPageHandler CurrentPageHandler = null;
+        private IGameMenuPageHandler? CurrentPageHandler = null;
 
         /// <summary>The last tab that was open.</summary>
         private int PreviousTab = INVALID_TAB;
@@ -25,7 +25,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
         private int CurrentTab => NativeMenu.currentTab;
 
         /// <summary>The native list of clickable tabs, used for checking if they were clicked.</summary>
-        private List<ClickableComponent> Tabs;
+        private List<ClickableComponent>? Tabs;
 
         /// <summary>Null constructor that currently only invokes the base null constructor</summary>
         public GameMenuHandler()

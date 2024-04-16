@@ -26,7 +26,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         };
 
         /// <summary>The item to be bought/sold.</summary>
-        protected Item ClickedItem = null;
+        protected Item? ClickedItem = null;
 
         /// <summary>The number of items in the transaction.</summary>
         protected int Amount { get; set; } = 0;
@@ -77,7 +77,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
 
         /// <summary>Creates an instance of the action.</summary>
         /// <returns>The instance or null if no valid item was selected.</returns>
-        public static ShopAction Create()
+        public static ShopAction? Create()
         {
             return null;
         }

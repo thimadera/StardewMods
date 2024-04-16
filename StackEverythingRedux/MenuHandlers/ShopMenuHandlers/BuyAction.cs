@@ -68,7 +68,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
                 );
 
             // Using Linq here is slower by A LOT but ultimately MUCH more readable
-            amount = Seq.Min(amount, GetMaxPurchasable(), chosen_max);
+            amount = new List<int>([amount, GetMaxPurchasable(), chosen_max]).Min();
 
             // If we couldn't grab all that we wanted then only subtract the amount we were able to grab
             int numHeld = heldItem?.Stack ?? 0;
@@ -141,7 +141,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <param name="shopMenu">Native shop menu.</param>
         /// <param name="p">Mouse location.</param>
         /// <returns>The clicked item or null if none was clicked.</returns>
-        public static ISalable GetClickedShopItem(ShopMenu shopMenu, Point p)
+        public static ISalable? GetClickedShopItem(ShopMenu shopMenu, Point p)
         {
             List<ISalable> itemsForSale = shopMenu.forSale;
             int index = GetClickedItemIndex(shopMenu, p);
@@ -164,7 +164,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
         /// <param name="shopMenu">Native shop menu.</param>
         /// <param name="mouse">Mouse position.</param>
         /// <returns>The instance or null if no valid item was selected.</returns>
-        public static ShopAction Create(ShopMenu shopMenu, Point mouse)
+        public static ShopAction? Create(ShopMenu shopMenu, Point mouse)
         {
             ISalable item = GetClickedShopItem(shopMenu, mouse);
             return item != null ? new BuyAction(shopMenu, item) : null;

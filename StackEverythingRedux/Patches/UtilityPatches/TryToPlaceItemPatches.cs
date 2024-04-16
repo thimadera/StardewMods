@@ -7,7 +7,7 @@ using SObject = StardewValley.Object;
 
 namespace Thimadera.StardewMods.StackEverythingRedux.Patches
 {
-    internal class TryToPlaceItemPatch
+    internal class TryToPlaceItemPatches
     {
         private static readonly ICopier<Furniture> furnitureCopier = new FurnitureCopier();
 
