@@ -5,7 +5,7 @@
     "config.DefaultCraftingAmount.tooltip": "The default amount when you Shift+RightClick in the Cooking / Crafting menu",
     "config.DefaultShopAmount.name": "Default shop amount",
     "config.DefaultShopAmount.tooltip": "The default amount when you Shift+RightClick in a Shop menu",
-    "config.EnableStackSplitRedux.name": "[BETA] Enable Split Redux",
-    "config.EnableStackSplitRedux.tooltip": "[BETA] Enable Split Redux functionalities. Please note that not all functionalities have been fully tested. Use at your own risk.",
+    "config.EnableStackSplitRedux.name": "Enable Split Redux",
+    "config.EnableStackSplitRedux.tooltip": "Enable Split Redux functionalities. Uncheck this box if you are experiencing any issue",
     "ui.stacksplitmenu.title": "Select Amount"
 }
