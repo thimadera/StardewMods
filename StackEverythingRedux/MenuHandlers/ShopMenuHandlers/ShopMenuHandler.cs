@@ -1,3 +1,4 @@
+using StackEverythingRedux.UI;
 using StardewValley.Menus;
 
 namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers

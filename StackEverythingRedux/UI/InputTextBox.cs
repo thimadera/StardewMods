@@ -125,9 +125,10 @@ namespace StackEverythingRedux.UI
                     ClearTextIfHighlighted();
                     RemoveCharacterLeftOfCaret();
                     break;
-                case Keys.Enter:
-                    Submit();
-                    break;
+                // Started using Key.Enter from SMAPI because SDV don't recognize numpad enter
+                //case Keys.Enter:
+                //    Submit();
+                //    break;
                 case Keys.Tab:
                     break;
             }

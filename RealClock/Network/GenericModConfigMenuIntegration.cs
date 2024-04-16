@@ -1,18 +1,22 @@
-using GenericModConfigMenu;
+using RealClock.Models;
 using StardewModdingAPI;
 
-namespace Thimadera.StardewMods.RealClock.Network
+namespace RealClock.Network
 {
     internal class GenericModConfigMenuIntegration
     {
-        static public void AddConfig(IGenericModConfigMenuApi genericModConfigApi, IManifest mod, IModHelper helper, ModConfig config)
+        public static void AddConfig(IGenericModConfigMenuApi genericModConfigApi, IManifest mod, IModHelper helper, ModConfig config)
         {
 
             if (genericModConfigApi is null)
+            {
                 return;
+            }
 
             if (config is null)
+            {
                 return;
+            }
 
             I18n.Init(helper.Translation);
 

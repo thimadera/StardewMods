@@ -207,6 +207,10 @@ namespace StackEverythingRedux.MenuHandlers
         /// <returns>True if it should be consumed, false otherwise.</returns>
         protected virtual bool ShouldConsumeKeyboardInput(SButton keyPressed)
         {
+            if (keyPressed == SButton.Enter && SplitMenu is not null)
+            {
+                SplitMenu.Submit();
+            }
             return SplitMenu != null;
         }
 

@@ -1,14 +1,14 @@
-using GenericModConfigMenu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealClock.Models;
+using RealClock.Network;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Menus;
 using System.Text;
-using Thimadera.StardewMods.RealClock.Network;
 
-namespace Thimadera.StardewMods.RealClock
+namespace RealClock
 {
     internal sealed class RealClock : Mod
     {
@@ -77,9 +77,9 @@ namespace Thimadera.StardewMods.RealClock
             SpriteFont font = Game1.dialogueFont;
 
             Vector2 txtSize = font.MeasureString(_timeText);
-            Vector2 timePosition = new((sourceRect.X * 0.55f) - (txtSize.X / 2f) + ((timeShakeTimer > 0) ? Game1.random.Next(-2, 3) : 0), (sourceRect.Y * (LocalizedContentManager.CurrentLanguageLatin ? 0.31f : 0.31f)) - (txtSize.Y / 2f) + ((timeShakeTimer > 0) ? Game1.random.Next(-2, 3) : 0));
+            Vector2 timePosition = new((sourceRect.X * 0.55f) - (txtSize.X / 2f) + (timeShakeTimer > 0 ? Game1.random.Next(-2, 3) : 0), (sourceRect.Y * (LocalizedContentManager.CurrentLanguageLatin ? 0.31f : 0.31f)) - (txtSize.Y / 2f) + (timeShakeTimer > 0 ? Game1.random.Next(-2, 3) : 0));
             bool nofade = Game1.shouldTimePass() || Game1.fadeToBlack || Game1.currentGameTime.TotalGameTime.TotalMilliseconds % 2000.0 > 1000.0;
-            Utility.drawTextWithShadow(b, _timeText, font, dayTimeMoneyBox.position + timePosition, (exactTime >= 2400) ? Color.Red : (Game1.textColor * (nofade ? 1f : 0.5f)));
+            Utility.drawTextWithShadow(b, _timeText, font, dayTimeMoneyBox.position + timePosition, exactTime >= 2400 ? Color.Red : Game1.textColor * (nofade ? 1f : 0.5f));
         }
 
         private string GetTimeFormmated(int exactTime)

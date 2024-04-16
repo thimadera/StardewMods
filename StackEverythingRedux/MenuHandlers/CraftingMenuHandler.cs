@@ -1,4 +1,5 @@
 using StackEverythingRedux.MenuHandlers.GameMenuHandlers;
+using StackEverythingRedux.UI;
 using StardewValley.Menus;
 
 namespace StackEverythingRedux.MenuHandlers
