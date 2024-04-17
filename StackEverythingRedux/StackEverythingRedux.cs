@@ -19,10 +19,10 @@ namespace StackEverythingRedux
     {
         #region Internal Properties
         internal static Mod Instance;
+        internal static ModConfig Config;
+        internal static Harmony Harmony;
         internal static IManifest Manifest => Instance.ModManifest;
-        internal static Harmony Harmony => new(Manifest.UniqueID);
         internal static IModHelper ModHelper => Instance.Helper;
-        internal static ModConfig Config => ModHelper.ReadConfig<ModConfig>();
         internal static ITranslationHelper I18n => ModHelper.Translation;
         internal static IReflectionHelper Reflection => ModHelper.Reflection;
         internal static IInputHelper Input => ModHelper.Input;
@@ -42,6 +42,8 @@ namespace StackEverythingRedux
         public override void Entry(IModHelper helper)
         {
             Instance = this;
+            Config = ModHelper.ReadConfig<ModConfig>();
+            Harmony = new(Manifest.UniqueID);
 
             PatchHarmony();
             PrepareMapping();
