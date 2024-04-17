@@ -1,6 +1,6 @@
 using StardewValley.Menus;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
 {
     public interface IGameMenuPageHandler
     {
@@ -8,7 +8,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
         /// <param name="menu">The native menu owning all the pages.</param>
         /// <param name="page">The specific page this handler is for.</param>
         /// <param name="inventory">The inventory handler.</param>
-        void Open(IClickableMenu menu, IClickableMenu page, InventoryHandler inventory);
+        bool Open(IClickableMenu menu, IClickableMenu page, InventoryHandler inventory);
 
         /// <summary>Tell the handler to close.</summary>
         void Close();

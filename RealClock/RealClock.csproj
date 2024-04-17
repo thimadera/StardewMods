@@ -3,7 +3,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <AssemblyName>RealClock</AssemblyName>
-        <RootNamespace>Thimadera.StardewMods.RealClock</RootNamespace>
+        <RootNamespace>RealClock</RootNamespace>
         <UpdateKeys>Nexus:21726</UpdateKeys>
     </PropertyGroup>
 </Project>

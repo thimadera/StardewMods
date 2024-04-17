@@ -3,7 +3,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     internal class BuyAction : ShopAction
     {
@@ -68,7 +68,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
                 );
 
             // Using Linq here is slower by A LOT but ultimately MUCH more readable
-            amount = Seq.Min(amount, GetMaxPurchasable(), chosen_max);
+            amount = new List<int>([amount, GetMaxPurchasable(), chosen_max]).Min();
 
             // If we couldn't grab all that we wanted then only subtract the amount we were able to grab
             int numHeld = heldItem?.Stack ?? 0;
@@ -123,8 +123,8 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandle
                     Log.TraceIfD($"{pfx} player has {currentMonies} of currency {ShopCurrencyType} ({ShopCurrencyName})");
                 }
                 else
-                {  // barter system. "monies" is now the wanted barter item in [2]
-                    itemPrice = stockData.Price;
+                {  // barter system. "monies" is now the wanted barter item in TradeItem
+                    itemPrice = (int)stockData.TradeItemCount;
                     string barterItem = stockData.TradeItem;
                     currentMonies = Game1.player.Items.CountId(barterItem);
                     Log.TraceIfD($"{pfx} Barter system: player has {currentMonies} of item {barterItem}");

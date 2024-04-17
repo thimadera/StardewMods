@@ -6,7 +6,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.UI
+namespace StackEverythingRedux.UI
 {
     /// <summary>Custom implementation of the NameMenu input text box that has additional functionality.</summary>
     public class InputTextBox : IKeyboardSubscriber
@@ -125,9 +125,10 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
                     ClearTextIfHighlighted();
                     RemoveCharacterLeftOfCaret();
                     break;
-                case Keys.Enter:
-                    Submit();
-                    break;
+                // Started using Key.Enter from SMAPI because SDV don't recognize numpad enter
+                //case Keys.Enter:
+                //    Submit();
+                //    break;
                 case Keys.Tab:
                     break;
             }

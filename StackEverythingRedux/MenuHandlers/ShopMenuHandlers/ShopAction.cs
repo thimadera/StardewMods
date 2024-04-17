@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Menus;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     public abstract class ShopAction : IShopAction
     {

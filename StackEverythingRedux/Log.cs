@@ -1,10 +1,8 @@
 using StardewModdingAPI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux
+namespace StackEverythingRedux
 {
-    /// <summary>
-    /// Convenience class so we don't have to keep passing Mod.Instance.Monitor everywhere
-    /// </summary>
+
     public static class Log
     {
         public static void Alert(string msg)
@@ -48,13 +46,6 @@ namespace Thimadera.StardewMods.StackEverythingRedux
             {
                 Trace(msg);
             }
-        }
-    }
-    public static class Seq
-    {
-        public static int Min(params int[] args)
-        {
-            return args.Min();
         }
     }
 }

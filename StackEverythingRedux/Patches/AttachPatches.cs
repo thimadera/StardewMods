@@ -1,8 +1,8 @@
 using StardewValley;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches
+namespace StackEverythingRedux.Patches
 {
-    internal class AttachPatch
+    internal class AttachPatches
     {
         private static StardewValley.Object tackleToAttach;
         private static int tackleToAttachStack;

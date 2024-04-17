@@ -2,9 +2,9 @@ using StardewValley;
 using StardewValley.Locations;
 using StardewValley.Objects;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches
+namespace StackEverythingRedux.Patches
 {
-    internal class FurniturePickupPatch
+    internal class RemoveQueuedFurniturePatches
     {
         public static bool Prefix(DecoratableLocation __instance, Guid guid)
         {

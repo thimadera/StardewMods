@@ -1,12 +1,16 @@
+using StackEverythingRedux.Models;
 using StardewModdingAPI;
-using Thimadera.StardewMods.StackEverythingRedux.Models;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.Network
+namespace StackEverythingRedux.Network
 {
     internal class GenericModConfigMenuIntegration
     {
-        public static void AddConfig(IGenericModConfigMenuApi genericModConfigApi, IManifest mod, IModHelper helper, ModConfig config)
+        private static ModConfig Config = StackEverythingRedux.Config;
+
+        public static void AddConfig()
         {
+            IGenericModConfigMenuApi genericModConfigApi = StackEverythingRedux.Registry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
+            IManifest mod = StackEverythingRedux.Manifest;
 
             if (genericModConfigApi is null)
             {
@@ -14,25 +18,25 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Network
                 return;
             }
 
-            if (config is null)
+            if (Config is null)
             {
                 return;
             }
 
-            I18n.Init(helper.Translation);
+            I18n.Init(StackEverythingRedux.I18n);
 
             genericModConfigApi.Register(
                 mod,
-                reset: () => config = new ModConfig(),
-                save: () => helper.WriteConfig(config)
+                reset: () => Config = new ModConfig(),
+                save: () => StackEverythingRedux.ModHelper.WriteConfig(Config)
             );
 
             genericModConfigApi.AddNumberOption(
                 mod,
                 name: I18n.Config_MaxStackingNumber_Name,
                 tooltip: I18n.Config_MaxStackingNumber_Tooltip,
-                getValue: () => config.MaxStackingNumber,
-                setValue: value => config.MaxStackingNumber = value
+                getValue: () => Config.MaxStackingNumber,
+                setValue: value => Config.MaxStackingNumber = value
             );
 
             genericModConfigApi.AddSectionTitle(mod, () => "Stack Split Redux");
@@ -41,24 +45,24 @@ namespace Thimadera.StardewMods.StackEverythingRedux.Network
                 mod,
                 name: I18n.Config_EnableStackSplitRedux_Name,
                 tooltip: I18n.Config_EnableStackSplitRedux_Tooltip,
-                getValue: () => config.EnableStackSplitRedux,
-                setValue: value => config.EnableStackSplitRedux = value
+                getValue: () => Config.EnableStackSplitRedux,
+                setValue: value => Config.EnableStackSplitRedux = value
             );
 
             genericModConfigApi.AddNumberOption(
                 mod,
                 name: I18n.Config_DefaultCraftingAmount_Name,
                 tooltip: I18n.Config_DefaultCraftingAmount_Tooltip,
-                getValue: () => config.DefaultCraftingAmount,
-                setValue: value => config.DefaultCraftingAmount = value
+                getValue: () => Config.DefaultCraftingAmount,
+                setValue: value => Config.DefaultCraftingAmount = value
             );
 
             genericModConfigApi.AddNumberOption(
                 mod,
                 name: I18n.Config_DefaultShopAmount_Name,
                 tooltip: I18n.Config_DefaultShopAmount_Tooltip,
-                getValue: () => config.DefaultShopAmount,
-                setValue: value => config.DefaultShopAmount = value
+                getValue: () => Config.DefaultShopAmount,
+                setValue: value => Config.DefaultShopAmount = value
             );
         }
     }

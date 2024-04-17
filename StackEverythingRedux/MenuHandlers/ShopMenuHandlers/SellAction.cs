@@ -3,7 +3,7 @@ using StardewValley;
 using StardewValley.Menus;
 using SObject = StardewValley.Object;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     public class SellAction : ShopAction
     {

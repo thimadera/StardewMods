@@ -1,6 +1,6 @@
 # 📦 Stack Everything Redux for Stardew Valley 🌱
 
-**Version:** 1.0.4
+**Version:** 1.1.0
 
 ## Description:
 **Stack Everything Redux** is an awesome mod that supercharges your item stacking experience in Stardew Valley! Say goodbye to clutter because now you can stack all sorts of items that normally don't stack, like **Furniture**, **Tackles**, and **Wallpapers**. Not only that, you can go beyond the default limit of 999 by customizing the max stack amount in the mod's settings.

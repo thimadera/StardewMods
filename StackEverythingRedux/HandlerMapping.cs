@@ -1,6 +1,6 @@
-using Thimadera.StardewMods.StackEverythingRedux.MenuHandlers;
+using StackEverythingRedux.MenuHandlers;
 
-namespace Thimadera.StardewMods.StackEverythingRedux
+namespace StackEverythingRedux
 {
     internal static class HandlerMapping
     {

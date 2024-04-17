@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley.Menus;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
+namespace StackEverythingRedux.MenuHandlers
 {
     /// <summary>Represents states of input being handled.</summary>
     public enum EInputHandled
@@ -26,7 +26,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
 
         /// <summary>Notifies the handler that its native menu has been opened.</summary>
         /// <param name="menu">The menu that was opened.</param>
-        void Open(IClickableMenu menu);
+        bool Open(IClickableMenu menu);
 
         /// <summary>Notifies the handler that its native menu was closed.</summary>
         void Close();

@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StackEverythingRedux.UI;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
-using Thimadera.StardewMods.StackEverythingRedux.UI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
+namespace StackEverythingRedux.MenuHandlers
 {
     public abstract class BaseMenuHandler<TMenuType>
         : IMenuHandler where TMenuType : IClickableMenu
@@ -58,7 +58,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
 
         /// <summary>Notifies the handler that its native menu has been opened.</summary>
         /// <param name="menu">The menu that was opened.</param>
-        public virtual void Open(IClickableMenu menu)
+        public virtual bool Open(IClickableMenu menu)
         {
             Debug.Assert(IsCorrectMenuType(menu));
             NativeMenu = menu as TMenuType;
@@ -68,6 +68,8 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
             {
                 InitInventory();
             }
+
+            return true;
         }
 
         /// <summary>Notifies the handler that its native menu was closed.</summary>
@@ -207,6 +209,10 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
         /// <returns>True if it should be consumed, false otherwise.</returns>
         protected virtual bool ShouldConsumeKeyboardInput(SButton keyPressed)
         {
+            if (keyPressed == SButton.Enter && SplitMenu is not null)
+            {
+                SplitMenu.Submit();
+            }
             return SplitMenu != null;
         }
 

@@ -1,7 +1,7 @@
 using StardewValley;
 using StardewValley.Menus;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
 {
     public abstract class GameMenuPageHandler<TPageType> : IGameMenuPageHandler where TPageType : IClickableMenu
     {
@@ -28,20 +28,21 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
             Log.TraceIfD($"[{nameof(GameMenuPageHandler<TPageType>)}] Finalized for TPageType = {typeof(TPageType)}");
         }
 
-        /// <summary>Notifies the page handler that its corresponding menu has been opened.</summary>
-        /// <param name="menu">The native menu owning all the pages.</param>
-        /// <param name="page">The specific page this handler is for.</param>
-        /// <param name="inventoryHandler">The inventory handler.</param>
-        public virtual void Open(IClickableMenu menu, IClickableMenu page, InventoryHandler inventoryHandler)
+        public virtual bool Open(IClickableMenu menu, IClickableMenu page, InventoryHandler inventoryHandler)
         {
-            NativeMenu = menu;
             MenuPage = page as TPageType;
+
+            if (MenuPage is null) { return false; }
+
+            NativeMenu = menu;
             InventoryHandler = inventoryHandler;
 
             if (HasInventory)
             {
                 InitInventory();
             }
+
+            return true;
         }
 
         /// <summary>Tell the handler to close.</summary>

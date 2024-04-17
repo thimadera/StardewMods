@@ -4,7 +4,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
+namespace StackEverythingRedux.MenuHandlers
 {
     public class InventoryHandler
     {

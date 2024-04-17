@@ -4,7 +4,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.UI
+namespace StackEverythingRedux.UI
 {
     /// <summary>Manages the UI for inputting the stack amount.</summary>
     public class StackSplitMenu
@@ -39,6 +39,8 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
 
         private readonly Guid GUID = Guid.NewGuid();
 
+        private readonly InputTextBox inputBox;
+
         /// <summary>Constructs an instance.</summary>
         /// <param name="textSubmittedCallback">The callback for when the text is submitted.</param>
         /// <param name="heldStackAmount">The default stack amount to set the text to.</param>
@@ -50,7 +52,7 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
             OnTextSubmitted = textSubmittedCallback;
             HeldStackAmount = heldStackAmount;
 
-            InputTextBox inputBox = InputTextBox = new InputTextBox(CHAR_LIMIT, heldStackAmount.ToString())
+            inputBox = InputTextBox = new InputTextBox(CHAR_LIMIT, heldStackAmount.ToString())
             {
                 Position = new Vector2(Game1.getMouseX(true), Game1.getMouseY(true) - Game1.tileSize),
                 Extent = new Vector2(Game1.tileSize * 2, Game1.tileSize),
@@ -150,6 +152,11 @@ namespace Thimadera.StardewMods.StackEverythingRedux.UI
         public void Update()
         {
             InputTextBox.Update();
+        }
+
+        public void Submit()
+        {
+            Submit(inputBox.Text);
         }
 
         /// <summary>Callback to the input textbox's submit event. Fires the callback passed to this class.</summary>

@@ -1,6 +1,6 @@
-namespace Thimadera.StardewMods.StackEverythingRedux.Patches.Size
+namespace StackEverythingRedux.Patches
 {
-    internal class MaximumStackSizePatch
+    internal class MaximumStackSizePatches
     {
         public static bool Prefix(ref int __result)
         {

@@ -1,10 +1,10 @@
+using StackEverythingRedux.UI;
 using StardewValley;
 using StardewValley.Menus;
 using System.Diagnostics;
-using Thimadera.StardewMods.StackEverythingRedux.UI;
 using SFarmer = StardewValley.Farmer;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
+namespace StackEverythingRedux.MenuHandlers
 {
     public class ItemGrabMenuHandler : BaseMenuHandler<ItemGrabMenu>
     {

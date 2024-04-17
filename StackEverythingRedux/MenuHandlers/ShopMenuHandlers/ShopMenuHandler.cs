@@ -1,7 +1,7 @@
+using StackEverythingRedux.UI;
 using StardewValley.Menus;
-using Thimadera.StardewMods.StackEverythingRedux.UI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.ShopMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
 {
     public class ShopMenuHandler : BaseMenuHandler<ShopMenu>
     {

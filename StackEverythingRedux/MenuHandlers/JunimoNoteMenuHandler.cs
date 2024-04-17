@@ -1,8 +1,8 @@
+using StackEverythingRedux.UI;
 using StardewValley;
 using StardewValley.Menus;
-using Thimadera.StardewMods.StackEverythingRedux.UI;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers
+namespace StackEverythingRedux.MenuHandlers
 {
     public class JunimoNoteMenuHandler : BaseMenuHandler<JunimoNoteMenu>
     {

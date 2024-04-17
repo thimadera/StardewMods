@@ -1,4 +1,4 @@
-namespace Thimadera.StardewMods.StackEverythingRedux.UI
+namespace StackEverythingRedux.UI
 {
     internal sealed class Caret
     {

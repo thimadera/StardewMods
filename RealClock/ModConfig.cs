@@ -1,4 +1,4 @@
-﻿namespace Thimadera.StardewMods.RealClock
+﻿namespace RealClock
 {
     public class ModConfig
     {

@@ -3,7 +3,7 @@ using StardewValley;
 using StardewValley.Inventories;
 using StardewValley.Menus;
 
-namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandlers
+namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
 {
     public class CraftingPageHandler : GameMenuPageHandler<CraftingPage>
     {
@@ -25,18 +25,11 @@ namespace Thimadera.StardewMods.StackEverythingRedux.MenuHandlers.GameMenuHandle
         /// <summary>Initializes the inventory using the most common variable names.</summary>
         public override void InitInventory()
         {
-            if (MenuPage != null && MenuPage.inventory != null)
-            {
-                // We need to do this explicitly because the crafting page uses a different variable name for hover item.
-                InventoryMenu inventoryMenu = MenuPage.inventory;
-                StardewModdingAPI.IReflectedField<Item> hoveredItemField = StackEverythingRedux.Reflection.GetField<Item>(MenuPage, "hoverItem");
+            // We need to do this explicitly because the crafting page uses a different variable name for hover item.
+            InventoryMenu inventoryMenu = MenuPage.inventory;
+            StardewModdingAPI.IReflectedField<Item> hoveredItemField = StackEverythingRedux.Reflection.GetField<Item>(MenuPage, "hoverItem");
 
-                InventoryHandler.Init(inventoryMenu, hoveredItemField);
-            }
-            else
-            {
-                Log.Warn("MenuPage or its inventory is null. Initialization aborted.");
-            }
+            InventoryHandler.Init(inventoryMenu, hoveredItemField);
         }
 
         /// <summary>Tells the handler that the inventory was shift-clicked.</summary>
