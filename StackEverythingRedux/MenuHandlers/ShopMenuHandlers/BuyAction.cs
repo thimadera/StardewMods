@@ -123,8 +123,8 @@ namespace StackEverythingRedux.MenuHandlers.ShopMenuHandlers
                     Log.TraceIfD($"{pfx} player has {currentMonies} of currency {ShopCurrencyType} ({ShopCurrencyName})");
                 }
                 else
-                {  // barter system. "monies" is now the wanted barter item in [2]
-                    itemPrice = stockData.Price;
+                {  // barter system. "monies" is now the wanted barter item in TradeItem
+                    itemPrice = (int)stockData.TradeItemCount;
                     string barterItem = stockData.TradeItem;
                     currentMonies = Game1.player.Items.CountId(barterItem);
                     Log.TraceIfD($"{pfx} Barter system: player has {currentMonies} of item {barterItem}");

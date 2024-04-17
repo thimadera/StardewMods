@@ -35,7 +35,7 @@ namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
 
         /// <summary>Notifies the handler that its native menu has been opened.</summary>
         /// <param name="menu">The menu that was opened.</param>
-        public override void Open(IClickableMenu menu)
+        public override bool Open(IClickableMenu menu)
         {
             base.Open(menu);
 
@@ -45,6 +45,8 @@ namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
             {
                 Log.Trace($"[{nameof(GameMenuHandler)}.{nameof(Open)}] Could not change to tab {CurrentTab}");
             }
+
+            return true;
         }
 
         /// <summary>Notifies the handler that its native menu was closed.</summary>
@@ -156,13 +158,22 @@ namespace StackEverythingRedux.MenuHandlers.GameMenuHandlers
 
             Log.TraceIfD($"[{nameof(GameMenuHandler)}.{nameof(ChangeTabs)}] Found a handler for tab {newTab} : {pageHandler}");
 
-            PreviousTab = newTab;
-            CurrentPageHandler = pageHandler;
-
             List<IClickableMenu> pages = NativeMenu.pages;
-            pageHandler.Open(NativeMenu, pages[newTab], InvHandler);
 
-            return true;
+            if (pageHandler.Open(NativeMenu, pages[newTab], InvHandler))
+            {
+                PreviousTab = newTab;
+                CurrentPageHandler = pageHandler;
+
+                return true;
+            }
+            else
+            {
+                // Please note that this is NOT AN ERROR
+                Log.Debug($"[{nameof(GameMenuHandler)}.{nameof(ChangeTabs)}] Custom menu detected, no handler for {pages[newTab]}");
+                return false;
+            }
+
         }
 
         /// <summary>Closes the current handler and sets the previous tab to invalid.</summary>

@@ -394,7 +394,7 @@ namespace StackEverythingRedux
                 foreach (Tuple<string, Type> t in kvp.Value)
                 {
                     HandlerMapping.Add(t.Item1, t.Item2);
-                    Log.Debug($"  Registered {t.Item1} to be handled by {t.Item2.Name}");
+                    Log.Debug($"Registered {t.Item1} to be handled by {t.Item2.Name}");
                 }
             }
         }

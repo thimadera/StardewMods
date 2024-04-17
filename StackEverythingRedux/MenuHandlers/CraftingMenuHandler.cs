@@ -18,10 +18,12 @@ namespace StackEverythingRedux.MenuHandlers
 
         /// <summary>Notifies the handler that its native menu has been opened.</summary>
         /// <param name="menu">The menu that was opened.</param>
-        public override void Open(IClickableMenu menu)
+        public override bool Open(IClickableMenu menu)
         {
             base.Open(menu);
-            CraftingPageHandler.Open(menu, NativeMenu, InvHandler);
+            _ = CraftingPageHandler.Open(menu, NativeMenu, InvHandler);
+
+            return true;
         }
 
         /// <summary>Notifies the handler that its native menu was closed.</summary>

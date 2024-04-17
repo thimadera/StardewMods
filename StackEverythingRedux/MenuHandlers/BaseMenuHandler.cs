@@ -58,7 +58,7 @@ namespace StackEverythingRedux.MenuHandlers
 
         /// <summary>Notifies the handler that its native menu has been opened.</summary>
         /// <param name="menu">The menu that was opened.</param>
-        public virtual void Open(IClickableMenu menu)
+        public virtual bool Open(IClickableMenu menu)
         {
             Debug.Assert(IsCorrectMenuType(menu));
             NativeMenu = menu as TMenuType;
@@ -68,6 +68,8 @@ namespace StackEverythingRedux.MenuHandlers
             {
                 InitInventory();
             }
+
+            return true;
         }
 
         /// <summary>Notifies the handler that its native menu was closed.</summary>
