@@ -1,6 +1,6 @@
 {
-    "config.Enabled.name": "Mod habilitado",
-    "config.Enabled.tooltip": "Se você desativar, o relógio vanilla será mostrado e a velocidade do tempo não será alterada.",
+    "config.TimeSpeedControl.name": "Controlar velocidade do tempo",
+    "config.TimeSpeedControl.tooltip": "Desabilite isso se você tem outro mod que você quer que controle a velocidade do tempo",
     "config.SecondsToMinutes.name": "Segundos pra minutos",
     "config.SecondsToMinutes.tooltip": "Em quantos segundos o relógio deve mudar",
     "config.Show24Hours.name": "Modo 24 horas",

@@ -1,6 +1,6 @@
 # Real Clock Mod for Stardew Valley 🕒🌱
 
-**Version:** 1.2.1
+**Version:** 1.2.4
 
 ## Description:
 The Real Clock mod for Stardew Valley enhances your gameplay experience by providing more control and realism over in-game time progression.

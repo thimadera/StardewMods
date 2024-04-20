@@ -33,7 +33,7 @@ namespace RealClock
         }
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
-            if (!Context.IsWorldReady || !Config.Enabled)
+            if (!Context.IsWorldReady || !Config.TimeSpeedControl)
             {
                 return;
             }
@@ -56,7 +56,7 @@ namespace RealClock
 
         private void OnRenderedHud(object sender, RenderedHudEventArgs e)
         {
-            if (!Game1.displayHUD || Game1.eventUp || !Config.Enabled || Game1.gameMode != 3 || Game1.freezeControls || Game1.panMode || Game1.HostPaused || Game1.game1.takingMapScreenshot)
+            if (!Game1.displayHUD || Game1.eventUp || Game1.gameMode != 3 || Game1.freezeControls || Game1.panMode || Game1.HostPaused || Game1.game1.takingMapScreenshot)
             {
                 return;
             }
@@ -98,10 +98,6 @@ namespace RealClock
             }
             else
             {
-                if (exactTime / 100 % 12 is <= 9 and > 0)
-                {
-                    _ = _timeText.Append('0');
-                }
                 _ = exactTime / 100 % 12 == 0 ? _timeText.Append("12") : _timeText.AppendEx(exactTime / 100 % 12);
             }
 

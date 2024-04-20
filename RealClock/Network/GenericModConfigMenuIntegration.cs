@@ -28,10 +28,10 @@ namespace RealClock.Network
 
             genericModConfigApi.AddBoolOption(
                 mod,
-                name: I18n.Config_Enabled_Name,
-                tooltip: I18n.Config_Enabled_Tooltip,
-                getValue: () => config.Enabled,
-                setValue: value => config.Enabled = value
+                name: I18n.Config_TimeSpeedControl_Name,
+                tooltip: I18n.Config_TimeSpeedControl_Tooltip,
+                getValue: () => config.TimeSpeedControl,
+                setValue: value => config.TimeSpeedControl = value
             );
 
             genericModConfigApi.AddNumberOption(

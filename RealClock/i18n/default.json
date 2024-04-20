@@ -1,6 +1,6 @@
 {
-    "config.Enabled.name": "Mod enabled",
-    "config.Enabled.tooltip": "If you disable it, the vanilla clock will be shown and the time speed will not change.",
+    "config.TimeSpeedControl.name": "Time speed control",
+    "config.TimeSpeedControl.tooltip": "Disable this if you have another mod that you want to control time speed",
     "config.SecondsToMinutes.name": "Seconds to minutes",
     "config.SecondsToMinutes.tooltip": "In how many seconds should the clock change",
     "config.Show24Hours.name": "24 hours mode",
