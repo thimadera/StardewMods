@@ -349,8 +349,10 @@ namespace StackEverythingRedux
 
         private static void Patch(string originalName, Type originalType, Type patchType)
         {
-            BindingFlags originalSearch = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
-            MethodInfo original = originalType.GetMethods(originalSearch).FirstOrDefault(m => m.Name == originalName);
+            BindingFlags originalSearch =
+                BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly;
+
+            MethodInfo original = originalType.GetMethod(originalName, originalSearch);
 
             if (original == null)
             {
@@ -358,16 +360,25 @@ namespace StackEverythingRedux
                 return;
             }
 
-            MethodInfo[] patchMethods = patchType.GetMethods(BindingFlags.Static | BindingFlags.Public);
-            MethodInfo prefix = patchMethods.FirstOrDefault(m => m.Name == "Prefix");
-            MethodInfo postfix = patchMethods.FirstOrDefault(m => m.Name == "Postfix");
+            MethodInfo prefix = patchType.GetMethod("Prefix", BindingFlags.Static | BindingFlags.Public);
+            MethodInfo postfix = patchType.GetMethod("Postfix", BindingFlags.Static | BindingFlags.Public);
+            MethodInfo transpiler = patchType.GetMethod("Transpiler", BindingFlags.Static | BindingFlags.Public);
 
-            if (prefix != null || postfix != null)
+            if (prefix != null || postfix != null || transpiler != null)
             {
                 try
                 {
-                    _ = Harmony.Patch(original, prefix == null ? null : new HarmonyMethod(prefix), postfix == null ? null : new HarmonyMethod(postfix));
-                    Log.Trace($"Patched {originalType}::{originalName} with{(prefix == null ? "" : $" {patchType.Name}::{prefix.Name}")}{(postfix == null ? "" : $" {patchType.Name}::{postfix.Name}")}");
+                    Harmony.Patch(original,
+                        prefix == null ? null : new HarmonyMethod(prefix),
+                        postfix == null ? null : new HarmonyMethod(postfix),
+                        transpiler == null ? null : new HarmonyMethod(transpiler)
+                    );
+
+                    Log.Trace($"Patched {originalType}::{originalName} with{
+                        (prefix == null ? "" : $" {patchType.Name}::{prefix.Name}")}{
+                        (postfix == null ? "" : $" {patchType.Name}::{postfix.Name}")}{
+                        (transpiler == null ? "" : $" {patchType.Name}::{transpiler.Name}")
+                    }");
                 }
                 catch (Exception e)
                 {
