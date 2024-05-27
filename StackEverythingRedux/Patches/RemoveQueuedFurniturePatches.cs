@@ -2,6 +2,7 @@ using HarmonyLib;
 using StardewValley;
 using StardewValley.Inventories;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 
 namespace StackEverythingRedux.Patches
 {
@@ -11,7 +12,6 @@ namespace StackEverythingRedux.Patches
         {
             CodeMatcher il = new CodeMatcher(source, gen);
             LocalBuilder qualifiedId = gen.DeclareLocal(typeof(string));
-            LocalBuilder item = gen.DeclareLocal(typeof(Item));
             Label skip = gen.DefineLabel();
             Label @break = gen.DefineLabel();
 
@@ -38,60 +38,22 @@ namespace StackEverythingRedux.Patches
 
             // ADD: code chunk
             // setup jumps
-
             il.Advance(1);
             il.Insert(
                 new CodeInstruction(OpCodes.Ldloc_0).WithLabels(skip)
             );
 
-            // item = who.Items[i];
+            // if (CheckModifyFurnitureStack(who, i, qualifiedId, ref foundInToolbar))
             il.InsertAndAdvance(
-                new CodeInstruction(OpCodes.Callvirt, typeof(Farmer).GetProperty(nameof(Farmer.Items)).GetMethod),
                 new CodeInstruction(OpCodes.Ldloc_3),
-                new CodeInstruction(OpCodes.Callvirt, typeof(Inventory).GetMethod("get_Item")),
-                new CodeInstruction(OpCodes.Stloc, item)
-            );
-
-            // if item != null
-            il.InsertAndAdvance(
-                new CodeInstruction(OpCodes.Ldloc, item),
-                new CodeInstruction(OpCodes.Brfalse, skip)
-            );
-
-            // && item.QualifiedItemId == qualifiedId
-            il.InsertAndAdvance(
-                new CodeInstruction(OpCodes.Ldloc, item),
-                new CodeInstruction(OpCodes.Callvirt, typeof(Item).GetProperty(nameof(Item.QualifiedItemId)).GetMethod),
                 new CodeInstruction(OpCodes.Ldloc, qualifiedId),
-                new CodeInstruction(OpCodes.Callvirt, typeof(string).GetMethod(nameof(string.Equals), [typeof(string)])),
-                new CodeInstruction(OpCodes.Brfalse, skip)
-            );
-
-            // item[i].Stack++
-            il.InsertAndAdvance(
-                new CodeInstruction(OpCodes.Ldloc, item),
-                new CodeInstruction(OpCodes.Ldloc, item),
-                new CodeInstruction(OpCodes.Callvirt, typeof(Item).GetProperty(nameof(Item.Stack)).GetMethod),
-                new CodeInstruction(OpCodes.Ldc_I4_1),
-                new CodeInstruction(OpCodes.Add),
-                new CodeInstruction(OpCodes.Callvirt, typeof(Item).GetProperty(nameof(Item.Stack)).SetMethod)
-            );
-
-            // who.CurrentToolIndex = i;
-            il.InsertAndAdvance(
-                new CodeInstruction(OpCodes.Ldloc_0),
-                new CodeInstruction(OpCodes.Ldloc_3),
-                new CodeInstruction(OpCodes.Callvirt, typeof(Farmer).GetProperty(nameof(Farmer.CurrentToolIndex)).SetMethod)
-            );
-
-            // foundInToolbar = true;
-            il.InsertAndAdvance(
-                new CodeInstruction(OpCodes.Ldc_I4_1),
-                new CodeInstruction(OpCodes.Stloc_2)
+                new CodeInstruction(OpCodes.Ldloca, 2),
+                new CodeInstruction(OpCodes.Call, typeof(RemoveQueuedFurniturePatches).GetMethod(nameof(CheckModifyFurnitureStack)))
             );
 
             // break;
             il.InsertAndAdvance(
+                new CodeInstruction(OpCodes.Brfalse, skip),
                 new CodeInstruction(OpCodes.Br, @break)
             );
 
@@ -103,6 +65,19 @@ namespace StackEverythingRedux.Patches
             il.AddLabels([@break]); // attach break
 
             return il.InstructionEnumeration();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool CheckModifyFurnitureStack(Farmer who, int i, string qualifiedId, ref bool foundInToolbar)
+        {
+            if (who.Items[i] is Item item && item.QualifiedItemId == qualifiedId)
+            {
+                item.Stack++;
+                who.CurrentToolIndex = i;
+                foundInToolbar = true;
+                return true;
+            }
+            return false;
         }
     }
 }
