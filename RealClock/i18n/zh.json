@@ -1,0 +1,8 @@
+{
+    "config.TimeSpeedControl.name": "时间速度控制",
+    "config.TimeSpeedControl.tooltip": "如果你有其他想控制时间速度的mod，请禁用此选项",
+    "config.SecondsToMinutes.name": "秒到分钟",
+    "config.SecondsToMinutes.tooltip": "时钟应该在多少秒内变化",
+    "config.Show24Hours.name": "24小时模式",
+    "config.Show24Hours.tooltip": "在12小时和24小时模式之间切换"
+}
