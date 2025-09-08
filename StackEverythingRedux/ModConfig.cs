@@ -12,10 +12,6 @@ namespace StackEverythingRedux
         public bool DebuggingMode { get; set; } = false;
     }
 
-    /// <summary>
-    /// This class containe "tunables" that should not be user-editable
-    /// </summary>
-    /// <remarks>Gathered here so we can tune the mod from one place, instead of hunting down config knobs everywhere</remarks>
     internal static class StaticConfig
     {
         /// <summary>Valid modifier keys to hold while RightClick-ing</summary>

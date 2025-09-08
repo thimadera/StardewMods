@@ -5,16 +5,11 @@ namespace StackEverythingRedux.Network
 {
     internal class GenericModConfigMenuIntegration
     {
-        private static ModConfig Config = StackEverythingRedux.Config;
-
-        public static void AddConfig()
+        public static void AddConfig(IGenericModConfigMenuApi genericModConfigApi, IManifest mod, IModHelper helper, ModConfig Config)
         {
-            IGenericModConfigMenuApi genericModConfigApi = StackEverythingRedux.Registry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
-            IManifest mod = StackEverythingRedux.Manifest;
 
             if (genericModConfigApi is null)
             {
-                Log.Trace("GMCM not available, skipping Mod Config Menu");
                 return;
             }
 
@@ -23,21 +18,21 @@ namespace StackEverythingRedux.Network
                 return;
             }
 
-            I18n.Init(StackEverythingRedux.I18n);
+            I18n.Init(helper.Translation);
 
             genericModConfigApi.Register(
                 mod,
                 reset: () => Config = new ModConfig(),
-                save: () => StackEverythingRedux.ModHelper.WriteConfig(Config)
+                save: () => helper.WriteConfig(Config)
             );
 
             genericModConfigApi.AddNumberOption(
-                mod,
-                name: I18n.Config_MaxStackingNumber_Name,
-                tooltip: I18n.Config_MaxStackingNumber_Tooltip,
-                getValue: () => Config.MaxStackingNumber,
-                setValue: value => Config.MaxStackingNumber = value
-            );
+               mod,
+               name: I18n.Config_MaxStackingNumber_Name,
+               tooltip: I18n.Config_MaxStackingNumber_Tooltip,
+               getValue: () => Config.MaxStackingNumber,
+               setValue: v => Config.MaxStackingNumber = v
+           );
 
             genericModConfigApi.AddSectionTitle(mod, () => "Stack Split Redux");
 
@@ -46,7 +41,7 @@ namespace StackEverythingRedux.Network
                 name: I18n.Config_EnableStackSplitRedux_Name,
                 tooltip: I18n.Config_EnableStackSplitRedux_Tooltip,
                 getValue: () => Config.EnableStackSplitRedux,
-                setValue: value => Config.EnableStackSplitRedux = value
+                setValue: v => Config.EnableStackSplitRedux = v
             );
 
             genericModConfigApi.AddNumberOption(
@@ -54,7 +49,7 @@ namespace StackEverythingRedux.Network
                 name: I18n.Config_DefaultCraftingAmount_Name,
                 tooltip: I18n.Config_DefaultCraftingAmount_Tooltip,
                 getValue: () => Config.DefaultCraftingAmount,
-                setValue: value => Config.DefaultCraftingAmount = value
+                setValue: v => Config.DefaultCraftingAmount = v
             );
 
             genericModConfigApi.AddNumberOption(
@@ -62,7 +57,7 @@ namespace StackEverythingRedux.Network
                 name: I18n.Config_DefaultShopAmount_Name,
                 tooltip: I18n.Config_DefaultShopAmount_Tooltip,
                 getValue: () => Config.DefaultShopAmount,
-                setValue: value => Config.DefaultShopAmount = value
+                setValue: v => Config.DefaultShopAmount = v
             );
         }
     }

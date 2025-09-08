@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>StackEverythingRedux</AssemblyName>
-        <RootNamespace>StackEverythingRedux</RootNamespace>
-        <UpdateKeys>Nexus:22381</UpdateKeys>
-        <EnableHarmony>true</EnableHarmony>
-    </PropertyGroup>
-</Project>

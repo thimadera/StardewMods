@@ -33,9 +33,9 @@ namespace RealClock
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
             helper.Events.Display.RenderedHud += OnRenderedHud;
-            Helper.Events.GameLoop.ReturnedToTitle += (_, __) => ResetInterpolators();
-            Helper.Events.GameLoop.SaveLoaded += (_, __) => ResetInterpolators();
-            Helper.Events.GameLoop.DayStarted += (_, __) => ResetInterpolators();
+            helper.Events.GameLoop.ReturnedToTitle += (_, __) => ResetInterpolators();
+            helper.Events.GameLoop.SaveLoaded += (_, __) => ResetInterpolators();
+            helper.Events.GameLoop.DayStarted += (_, __) => ResetInterpolators();
 
         }
 
