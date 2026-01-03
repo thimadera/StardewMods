@@ -42,7 +42,10 @@ namespace StackEverythingRedux
 
             Config = ModHelper.ReadConfig<ModConfig>();
             Harmony = new Harmony(Manifest.UniqueID);
-            Harmony.PatchAll();
+            if (Config.EnableStackEverything)
+            {
+                Harmony.PatchAll();
+            }
             PrepareMapping();
             RegisterEvents();
         }

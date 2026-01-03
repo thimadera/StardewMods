@@ -11,6 +11,7 @@ namespace StackEverythingRedux
         public int DefaultShopAmount { get; set; } = 5;
         public bool EnableTackleSplit { get; set; } = true;
         public bool DebuggingMode { get; set; } = false;
+        public bool EnableStackEverything { get; set; } = false;
     }
 
     /// <summary>

@@ -67,6 +67,14 @@ namespace StackEverythingRedux.Network
                 getValue: () => Config.DefaultShopAmount,
                 setValue: v => Config.DefaultShopAmount = v
             );
+
+            genericModConfigApi.AddBoolOption(
+                mod,
+                name: I18n.Config_EnableStackEverything_Name,
+                tooltip: I18n.Config_EnableStackEverything_Tooltip,
+                getValue: () => Config.EnableStackEverything,
+                setValue: v => Config.EnableStackEverything = v
+            );
         }
     }
 }
