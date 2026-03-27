@@ -35,7 +35,15 @@ namespace StackEverythingRedux
         /// <summary>Items that should not stack.</summary>
         internal static HashSet<string> NoStackQualifiedIds { get; set; } =
         [
-            "(F)FreeCactus"
+            "(F)FreeCactus",        // Free Cactus
+            "(TR)BasiliskPaw",      // Trinkets
+            "(TR)FairyBox",
+            "(TR)FrogEgg",
+            "(TR)GoldenSpur",
+            "(TR)IceRod",
+            "(TR)MagicHairGel",
+            "(TR)MagicQuiver",
+            "(TR)ParrotEgg"
         ];
     }
 }
