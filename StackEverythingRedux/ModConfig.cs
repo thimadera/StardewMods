@@ -35,15 +35,32 @@ namespace StackEverythingRedux
         /// <summary>Items that should not stack.</summary>
         internal static HashSet<string> NoStackQualifiedIds { get; set; } =
         [
-            "(F)FreeCactus",        // Free Cactus
-            "(TR)BasiliskPaw",      // Trinkets
+            // Free Cactus
+            "(F)FreeCactus",
+
+            // Trinkets
+            "(TR)BasiliskPaw",
             "(TR)FairyBox",
             "(TR)FrogEgg",
             "(TR)GoldenSpur",
             "(TR)IceRod",
             "(TR)MagicHairGel",
             "(TR)MagicQuiver",
-            "(TR)ParrotEgg"
+            "(TR)ParrotEgg",
+
+            // Weapons
+            "(W)4", // Galaxy Sword
+            "(W)23", // Galaxy Dagger
+            "(W)29", // Galaxy Hammer
+            "(W)61", // Iridium Needle
+            "(W)62", // Infinity Blade
+            "(W)63", // Infinity Gavel
+            "(W)64", // Infinity Dagger
+            "(W)65", // Meowmere
+            "(W)66",  // Iridium Scythe
+
+            // Forged rings
+            "(O)880"
         ];
     }
 }
